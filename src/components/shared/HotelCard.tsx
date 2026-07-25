@@ -1,6 +1,6 @@
 import type { Hotel } from "@/types/hotels";
 import { Link } from "react-router-dom";
-import { Heart, MapPin, Star } from "lucide-react";
+import { Heart} from "lucide-react";
 import { motion } from "framer-motion";
 
 interface HotelCardProps {
