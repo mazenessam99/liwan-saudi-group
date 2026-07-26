@@ -63,6 +63,12 @@ export default function PropertyListing({
         return Number(b.featured) - Number(a.featured);
 
     });
+
+    const clearFilters = () => {
+        setSearch("");
+        setSelectedCity("all");
+        setSortBy("featured");
+    };
     return (
         <section>
             <PageBanner
@@ -180,8 +186,10 @@ export default function PropertyListing({
                 {
                     sorted.length === 0 ?
                         <EmptyState
-                            title="لا توجد نتائج"
-                            description="جرب تغيير البحث"
+                            title="لا توجد نتائج مطابقة"
+                            description="جرّب تغيير كلمة البحث أو إزالة بعض الفلاتر للعثور على نتائج"  
+                            actionLabel="مسح كل الفلاتر"
+                            onAction={clearFilters}
                         />
                         :
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
