@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import FAQAccordion from "@/components/shared/FAQAccordion";
 import {  useState } from "react";
-import HeroSection from "@/components/shared/HeroSection";
+import PageBanner from "@/components/shared/PageBanner";
 
 export default function FAQ() {
     const [cat, setCat] = useState("الكل");
@@ -11,7 +11,7 @@ export default function FAQ() {
     const Categories=['الكل','الحجز','الإقامة','الخدمات','الدفع']
     return (
         <section className="">
-            <HeroSection/>
+            <PageBanner title="الأسئلة الشائعة" description="إجابات على أكثر الأسئلة شيوعاً"/>
             <div className="container mx-auto py-6 px-4 lg:px-8 max-w-4xl">
 
                 <div className="relative mb-6">

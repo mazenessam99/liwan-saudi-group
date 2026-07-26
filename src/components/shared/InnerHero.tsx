@@ -21,9 +21,7 @@ export default function InnerHero({ image, eyebrow, title, description }: HeroPr
                     <span className="inline-block font-bold text-xs text-gold px-4 py-2 rounded-full tracking-tight border border-gold/40 mb-4">{eyebrow}</span>
                     <h1 className="text-4xl md:text-6xl max-w-3xl mb-4 font-bold leading-tight">{title}</h1>
                     <p className="text-white/85 text-xl sm:text-2xl md:text-lg max-w-2xl leading-relaxed">{description}</p>
-
                 </motion.div>
-
             </div>
 
         </section>

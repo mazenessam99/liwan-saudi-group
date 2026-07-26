@@ -19,7 +19,7 @@ export default function HotelCard({ hotel, id }: HotelCardProps) {
                 damping: 20,
             }}
             className="relative bg-card rounded-2xl overflow-hidden border border-border group shado-sm hover:shadow-luxe transition-shadow">
-            <Link to={id} className="block">
+            <Link to={`/hotels/${id}`} className="block">
                 <div className="relative aspect-4/3 overflow-hidden">
                     <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-linear-to-t from black/60 via transparent to-transparent" />
@@ -65,11 +65,8 @@ export default function HotelCard({ hotel, id }: HotelCardProps) {
                             </div>
                             {/* Details */}
                             <span
-                                className="
-                                    flex items-center justify-center border border-border rounded-full px-4 py-1 text-gold text-xs font-semibold
-                                    transition-all duration-500
-                                    group-hover:bg-gold group-hover:text-charcoal"
-                            >
+                                className="flex items-center justify-center border border-border rounded-full px-4 py-1 text-gold 
+                                    text-xs font-semibold transition-all duration-500 group-hover:bg-gold group-hover:text-charcoal">
                                 عرض التفاصيل
                             </span>
 
