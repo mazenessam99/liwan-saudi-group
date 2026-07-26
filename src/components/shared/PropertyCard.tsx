@@ -8,7 +8,7 @@ interface HotelCardProps {
     id: string;
 }
 
-export default function HotelCard({ hotel, id }: HotelCardProps) {
+export default function PropertyCard({ hotel, id}: HotelCardProps) {
 
     return (
         <motion.div
@@ -19,7 +19,7 @@ export default function HotelCard({ hotel, id }: HotelCardProps) {
                 damping: 20,
             }}
             className="relative bg-card rounded-2xl overflow-hidden border border-border group shado-sm hover:shadow-luxe transition-shadow">
-            <Link to={`/hotels/${id}`} className="block">
+            <Link to={`/${hotel.type}/${id}`} className="block">
                 <div className="relative aspect-4/3 overflow-hidden">
                     <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-linear-to-t from black/60 via transparent to-transparent" />

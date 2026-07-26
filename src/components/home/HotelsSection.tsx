@@ -1,6 +1,6 @@
 import { hotels } from "@/data/hotels";
 import SectionHeader from "../shared/SectionHeader";
-import HotelCard from "../shared/HotelCard";
+import PropertyCard from "../shared/PropertyCard";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ export default function HotelsSection() {
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {hotels.slice(0, 6).map((hotel) => (
-                        <HotelCard hotel={hotel} id={hotel.id} key={hotel.id} />
+                        <PropertyCard hotel={hotel} id={hotel.id} key={hotel.id} />
                     ))}
                 </div>
                 <div className="mt-8 text-center">
