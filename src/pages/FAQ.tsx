@@ -10,11 +10,11 @@ export default function FAQ() {
     const [search,setSearch]=useState("")
     const Categories=['الكل','الحجز','الإقامة','الخدمات','الدفع']
     return (
-        <section className="">
+        <main className="">
             <PageBanner title="الأسئلة الشائعة" description="إجابات على أكثر الأسئلة شيوعاً"/>
-            <div className="container mx-auto py-6 px-4 lg:px-8 max-w-4xl">
+            <section className="container mx-auto py-6 px-4 lg:px-8 max-w-4xl">
 
-                <div className="relative mb-6">
+                <form className="relative mb-6">
                     <Search  className="absolute top-1/2 -translate-y-1/2 inset-s-3 w-4 h-4 text-muted-foreground"/>
                     <Input 
                         className="w-full ps-10 pe-4 py-5.5 bg-card
@@ -24,18 +24,20 @@ export default function FAQ() {
                         onChange={(e)=>setSearch(e.target.value)}
                         
                     />
-                </div>
-                <div className="flex gap-3 flex-wrap mb-8">
+                </form>
+                <nav className="flex gap-3 flex-wrap mb-8">
                 {Categories.map((category)=>(
 
                     <button key={category} onClick={()=>setCat(category)} className={` px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer ${cat === category ? "gradient-gold text-charcoal border-gold" : "bg-card border-border hover:border-gold hover:text-gold"} `}>
                         {category}
                     </button>
                 ))} 
-                </div>
-                <FAQAccordion category={cat} search={search}/>
-            </div>
+                </nav>
+                <section aria-label="الأسئلة الشائعة">
+                    <FAQAccordion category={cat} search={search}/>
+                </section>
+            </section>
 
-        </section>
+        </main>
     )
 }

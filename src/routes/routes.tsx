@@ -35,7 +35,6 @@ export const routes = createBrowserRouter([
                 element: <Home />
             },
 
-
             // Properties Listing
             {
                 path: "hotels",
@@ -49,7 +48,7 @@ export const routes = createBrowserRouter([
 
             // Property Details
             {
-                path: ":type/:id",
+                path: "accommodation/:type/:id",
                 element: <PropertyDetails />
             },
 
@@ -74,7 +73,6 @@ export const routes = createBrowserRouter([
                 path: "restaurant/:id",
                 element: <RestaurantDetails />
             },
-
 
             // Other Pages
             {
@@ -111,7 +109,6 @@ export const routes = createBrowserRouter([
                 path: "favorites",
                 element: <Favorites />
             },
-
 
             // Auth
             {

@@ -70,13 +70,13 @@ export default function PropertyListing({
         setSortBy("featured");
     };
     return (
-        <section>
+        <main>
             <PageBanner
                 title={title}
                 description={description}
             />
-            <div className="container mx-auto px-4 lg:px-8 py-10">
-                <div className="bg-card border border-border rounded-2xl p-4 mb-8 grid md:grid-cols-4 gap-3">
+            <section aria-label="property filters" className="container mx-auto px-4 lg:px-8 py-10">
+                <form className="bg-card border border-border rounded-2xl p-4 mb-8 grid md:grid-cols-4 gap-3">
 
                     {/* Search */}
                     <div className="relative md:col-span-2">
@@ -88,7 +88,7 @@ export default function PropertyListing({
                             placeholder="ابحث عن فندق"
                         />
                     </div>
-                    
+
                     {/* City */}
                     <Select
                         dir="rtl"
@@ -175,37 +175,40 @@ export default function PropertyListing({
                         </SelectContent>
 
                     </Select>
-                
-                </div>
+
+                </form>
 
                 <div className="flex items-center gap-2 mb-4 text-sm">
                     <SlidersHorizontal className="w-4 h-4" />
-                        <span className="text-gold">{sorted.length}</span>
-                        نتيجة
+                    <span className="text-gold">{sorted.length}</span>
+                    نتيجة
                 </div>
-                {
-                    sorted.length === 0 ?
-                        <EmptyState
-                            title="لا توجد نتائج مطابقة"
-                            description="جرّب تغيير كلمة البحث أو إزالة بعض الفلاتر للعثور على نتائج"  
-                            actionLabel="مسح كل الفلاتر"
-                            onAction={clearFilters}
-                        />
-                        :
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {
-                                sorted.map(item => (
-                                    <PropertyCard
-                                        key={item.id}
-                                        hotel={item}
-                                        id={item.id}
-                                    />
-                                ))
-                            }
-                        </div>
-                }
-            </div>
-        </section>
+                <section aria-label="properties">
+                    {
+                        sorted.length === 0 ?
+                            <EmptyState
+                                title="لا توجد نتائج مطابقة"
+                                description="جرّب تغيير كلمة البحث أو إزالة بعض الفلاتر للعثور على نتائج"
+                                actionLabel="مسح كل الفلاتر"
+                                onAction={clearFilters}
+                            />
+                            :
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {
+                                    sorted.map(item => (
+                                        <PropertyCard
+                                            key={item.id}
+                                            hotel={item}
+                                            id={item.id}
+                                        />
+                                    ))
+                                }
+                            </div>
+                    }
+                </section>
+
+            </section>
+        </main>
 
     )
 }

@@ -1,6 +1,9 @@
+import PageBanner from "@/components/shared/PageBanner";
 
 export default function Events() {
     return (
-        <div className="">Events</div>
+        <main className="">
+            <PageBanner title="الفعاليات" description="أمسيات استثنائية في أرقى وجهات المملكة"/>
+        </main>
     )
 }
