@@ -1,7 +1,7 @@
 import PageBanner from "@/components/shared/PageBanner";
 import RestaurantCard from "@/components/shared/RestaurantCard";
 import { restaurants } from "@/data/restaurants";
-import { useState } from "react";
+import { useListFilters } from "@/hooks/useListFilters";
 import {
     Select,
     SelectContent,
@@ -12,25 +12,20 @@ import {
 
 import { Search, SlidersHorizontal } from "lucide-react";
 import EmptyState from "@/components/shared/EmptyState";
+
 export default function Restaurants() {
-    const [search, setSearch] = useState('')
-    const [selectedCity, setSelectedCity] = useState('all');
-    const cities = [... new Set(restaurants.map(restaurant => restaurant.city))];
-    console.log(cities);
-
-    //Filters
-    const filteredRestaurants = restaurants.filter(restaurant => {
-        const searchMatch = restaurant.name.includes(search);
-        const cityMatch = selectedCity === 'all' || restaurant.city === selectedCity
-        return searchMatch && cityMatch
-    })
-
-    // ClearFilters
-    const clearFilters = (() => {
-        setSearch('')
-        setSelectedCity('all')
-    })
-
+    const {
+        search,
+        setSearch,
+        selectedCity,
+        setSelectedCity,
+        cities,
+        filtered: filteredRestaurants,
+        clearFilters,
+    } = useListFilters(restaurants, {
+        getName: (restaurant: any) => restaurant.name,
+        getCity: (restaurant: any) => restaurant.city,
+    });
 
     return (
         <main>
@@ -89,7 +84,7 @@ export default function Restaurants() {
                         </SelectContent>
                     </Select>
                 </form>
-                
+
                 <div className="flex items-center gap-2 mb-4 text-sm">
                     <SlidersHorizontal className="w-4 h-4" />
                     <span className="text-gold">{filteredRestaurants.length}</span>

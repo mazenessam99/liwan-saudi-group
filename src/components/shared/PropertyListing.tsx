@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react";
 import type { Hotel } from "@/types/hotels";
 
 import PageBanner from "./PageBanner";
 import PropertyCard from "./PropertyCard";
 import EmptyState from "./EmptyState";
+import { useListFilters } from "@/hooks/useListFilters";
 
 import {
     Select,
@@ -12,16 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-
 import { Search, SlidersHorizontal } from "lucide-react";
-
-
-type SortOption =
-    | "featured"
-    | "low-price"
-    | "high-price"
-    | "rating";
-
 
 interface Props {
     items: Hotel[];
@@ -29,46 +20,36 @@ interface Props {
     description: string;
 }
 
+const sortFns = {
+    "low-price": (a: Hotel, b: Hotel) => a.pricePerNight - b.pricePerNight,
+    "high-price": (a: Hotel, b: Hotel) => b.pricePerNight - a.pricePerNight,
+    "rating": (a: Hotel, b: Hotel) => b.rating - a.rating,
+    "featured": (a: Hotel, b: Hotel) => Number(b.featured) - Number(a.featured),
+};
+
 
 export default function PropertyListing({
     items,
     title,
     description
 }: Props) {
-    const [search, setSearch] = useState("");
-    const [selectedCity, setSelectedCity] = useState("all");
-    const [sortBy, setSortBy] = useState<SortOption>("featured");
-    const cities = useMemo(() => {
-        return [
-            ...new Set(
-                items.map(item => item.city)
-            )
-        ];
-
-    }, [items]);
-
-    const filtered = items.filter(item => {
-        const searchMatch = item.name.includes(search);
-        const cityMatch = selectedCity === "all" || item.city === selectedCity;
-        return searchMatch && cityMatch;
+    const {
+        search,
+        setSearch,
+        selectedCity,
+        setSelectedCity,
+        cities,
+        sortBy,
+        setSortBy,
+        filtered: sorted,
+        clearFilters,
+    } = useListFilters(items, {
+        getName: (item: Hotel) => item.name,
+        getCity: (item: Hotel) => item.city,
+        sortFns,
+        defaultSort: "featured",
     });
 
-    const sorted = [...filtered].sort((a, b) => {
-        if (sortBy === "low-price")
-            return a.pricePerNight - b.pricePerNight;
-        if (sortBy === "high-price")
-            return b.pricePerNight - a.pricePerNight;
-        if (sortBy === "rating")
-            return b.rating - a.rating;
-        return Number(b.featured) - Number(a.featured);
-
-    });
-
-    const clearFilters = () => {
-        setSearch("");
-        setSelectedCity("all");
-        setSortBy("featured");
-    };
     return (
         <main>
             <PageBanner
@@ -133,7 +114,7 @@ export default function PropertyListing({
                     <Select
                         dir="rtl"
                         value={sortBy}
-                        onValueChange={(value) => setSortBy(value as SortOption)}
+                        onValueChange={(value) => setSortBy(value)}
                     >
 
                         <SelectTrigger className="h-12 w-full bg-background border-border rounded-lg px-3 text-sm focus:ring-0 focus-visible:ring-0">
