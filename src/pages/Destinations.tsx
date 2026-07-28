@@ -22,7 +22,7 @@ export default function Destinations() {
                     </button>
                 ))} 
                 </nav>
-                <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {items.map((item) => (
                         <div className="border border-border rounded-xl group overflow-hidden cursor-pointer" key={item.id}>
                             <div className="aspect-4/3 overflow-hidden">
@@ -31,7 +31,7 @@ export default function Destinations() {
                             <div className="p-4">
                                 <span className="text-gold text-xs mb-1">{item.category}</span>
                                 <h3 className="text-semibold text-sm mb-2 line-clamp-1">{item.name}</h3>
-                                <p className="text-xs text-muted-foreground leading-relaxed mb-1">{item.description}</p>
+                                <p className="text-xs text-muted-foreground leading-relaxed mb-2">{item.description}</p>
                                 <span className="text-sm text-muted-foreground flex items-center gap-1">
                                     <MapPin className="w-3 h-3 text-gold" />
                                     {item.city}
