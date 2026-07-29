@@ -14,7 +14,7 @@ export default function StorySection() {
                 <div>
                     <span className='text-gold text-md uppercase tracking-[0.3em] font-bold'>قصتنا</span>
                     <h2 className='text-3xl md:text-4xl font-bold mt-2 mb-8'>من حلم <span className='text-gold'> سعودي</span> إلى علامة عالمية</h2>
-                    <p className='text-muted-foreground mb-4 leading-loose'>تأسست نُزُل برؤية واضحة: تقديم ضيافة سعودية أصيلة بمعايير عالمية. منذ انطلاقتنا في عام 2018، نسعى لإبراز جمال المملكة الفريد، من صحاريها الذهبية إلى سواحلها الفيروزية وجبالها الخضراء.</p>
+                    <p className='text-muted-foreground mb-4 leading-loose'>تأسست ليوان برؤية واضحة: تقديم ضيافة سعودية أصيلة بمعايير عالمية. منذ انطلاقتنا في عام 2018، نسعى لإبراز جمال المملكة الفريد، من صحاريها الذهبية إلى سواحلها الفيروزية وجبالها الخضراء.</p>
                     <p className='text-muted-foreground leading-loose'>اليوم، نملك أكثر من 40 عقاراً فاخراً في 20 وجهة، ونخدم آلاف الضيوف من حول العالم بشغف لا يهدأ نحو الكمال.</p>
                 </div>
 

@@ -15,6 +15,7 @@ export default function TestimonialsSection() {
                         <h3 className="text-sm text-muted-foreground leading-relaxed mt-3">"{testimonial.text} "</h3>
                         <div className="flex items-center gap-2 mt-3">
                             <span
+                                aria-hidden="true"
                                 className="w-10 h-10 rounded-full text-sm text-white font-bold flex items-center justify-center border border-white/20 shadow-md"
                                 style={{
                                     backgroundColor: `#${avatarColors[index % avatarColors.length]}`,

@@ -52,14 +52,14 @@ export default function WhyNuzulSection() {
                             px-4
                             py-2
                             rounded-full
-                            ">لماذا نُزُل
+                            ">لماذا ليوان
                         </span>
                         <h2 className="mb-4 text-3xl md:text-5xl font-bold leading-relaxed">
                             ضيافة تُصنع بعناية <br />
                             <span className="text-gold">وتُقدَّم بشغف</span>
                         </h2>
                         <p className="text-muted-foreground leading-loose mb-6">
-                            في نُزُل، نرى أن الإقامة الفاخرة ليست ترفًا عابرًا، بل قصة تُروى بلغة التفاصيل: من عبق القهوة العربية عند الاستقبال، إلى الوسادة المختارة بعناية قبل النوم. نستلهم روحنا من كرم الجزيرة العربية، ونصوغها بمعايير عالمية تليق برؤية 2030.
+                            في ليوان، نرى أن الإقامة الفاخرة ليست ترفًا عابرًا، بل قصة تُروى بلغة التفاصيل: من عبق القهوة العربية عند الاستقبال، إلى الوسادة المختارة بعناية قبل النوم. نستلهم روحنا من كرم الجزيرة العربية، ونصوغها بمعايير عالمية تليق برؤية 2030.
                         </p>
                         <div className="flex flex-wrap gap-3">
                             <Link to={'/about'} className="inline-flex items-center gap-2 gradient-gold font-semibold text-charcoal px-6 py-3 rounded-full"> قصتنا<ArrowLeft className="w-4 h-4" /> </Link>

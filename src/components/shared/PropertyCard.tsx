@@ -18,17 +18,17 @@ export default function PropertyCard({ hotel, id}: HotelCardProps) {
                 stiffness: 200,
                 damping: 20,
             }}
-            className="relative bg-card rounded-2xl overflow-hidden border border-border group shado-sm hover:shadow-luxe transition-shadow">
+            className="relative bg-card rounded-2xl overflow-hidden border border-border group shadow-sm hover:shadow-luxe transition-shadow">
             <Link to={`/accommodation/${hotel.type}/${id}`} className="block">
                 <div className="relative aspect-4/3 overflow-hidden">
-                    <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                    <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-linear-to-t from black/60 via transparent to-transparent" />
-                    <button onClick={(e) => e.preventDefault()} className="absolute top-3 left-3 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur bg-black/40 text-white cursor-pointer hover:bg-gold hover:text-charcoal transition-colors">
+                    <button aria-label="إضافة إلى المفضلة" onClick={(e) => e.preventDefault()} className="absolute top-3 left-3 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur bg-black/40 text-white cursor-pointer hover:bg-gold hover:text-charcoal transition-colors">
                         <Heart className="w-5 h-5" />
                     </button>
                     <div className="absolute bottom-3 right-3 flex flex-wrap gap-1">
                         {hotel.tags.map(tag => (
-                            <span className="inline-block  bg-gold text-charcoal font-semibold text-[10px] px-2 py-1 rounded-full">{tag}</span>
+                            <span className="inline-block  bg-gold text-charcoal font-semibold text-[10px] px-2 py-1 rounded-full" key={tag}>{tag}</span>
                         ))}
                     </div>
                 </div>

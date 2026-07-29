@@ -1,4 +1,4 @@
-# Nuzul Saudi Group
+# Liwan Saudi Group
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" />
@@ -10,7 +10,7 @@
 
 ## ✨ Overview
 
-Nuzul Saudi Group is a premium luxury hospitality platform inspired by Saudi Arabia's Vision 2030 and the future of luxury tourism.
+Liwan Saudi Group is a premium luxury hospitality platform inspired by Saudi Arabia's Vision 2030 and the future of luxury tourism.
 
 The platform delivers a complete hospitality ecosystem featuring luxury hotels, resorts, serviced apartments, restaurants, destinations, events, offers, and immersive travel experiences through a modern Arabic-first digital experience.
 
@@ -131,7 +131,7 @@ src/
 
 ## 🎨 Design Philosophy
 
-Nuzul Saudi Group combines:
+Liwan Saudi Group combines:
 
 * Saudi Vision 2030
 * Luxury Hospitality Experiences
@@ -147,7 +147,7 @@ The goal is to create a digital experience that feels like a blend of world-clas
 
 ```bash
 # Clone repository
-git clone https://github.com/mazenessam99/nuzul-saudi-group.git
+git clone https://github.com/mazenessam99/liwan-saudi-group.git
 
 # Install dependencies
 npm install

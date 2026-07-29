@@ -22,7 +22,7 @@ export default function Login() {
 
                 <div className="absolute bottom-4 right-4 z-10 text-white">
                     <h2 className="font-bold text-4xl mb-3">
-                        أهلاً بك في نُزُل
+                        أهلاً بك في ليوان
                     </h2>
 
                     <p className="text-white/85 max-w-md transition-colors duration-500 hover:text-gold">

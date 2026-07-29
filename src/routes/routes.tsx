@@ -1,27 +1,28 @@
+import { lazy } from "react";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
-import Destinations from "@/pages/Destinations";
-import Events from "@/pages/Events";
-import FAQ from "@/pages/FAQ";
-import Favorites from "@/pages/Favorites";
-import Home from "@/pages/Home";
-import Hotels from "@/pages/Hotels";
-import Login from "@/pages/Login";
-import NotFound from "@/pages/NotFound";
-import Offers from "@/pages/Offers";
-import Privacy from "@/pages/Privacy";
-import PropertyDetails from "@/pages/PropertyDetails";
-import Register from "@/pages/Register";
-import Resorts from "@/pages/Resorts";
-import RestaurantDetails from "@/pages/RestaurantDetails";
-import Restaurants from "@/pages/Restaurants";
-import RoomDetails from "@/pages/RoomDetails";
-import Rooms from "@/pages/Rooms";
-import Terms from "@/pages/Terms";
-
-import { createBrowserRouter } from "react-router-dom";
+// Lazy loaded pages
+const Home = lazy(() => import("@/pages/Home"));
+const Hotels = lazy(() => import("@/pages/Hotels"));
+const Resorts = lazy(() => import("@/pages/Resorts"));
+const PropertyDetails = lazy(() => import("@/pages/PropertyDetails"));
+const Rooms = lazy(() => import("@/pages/Rooms"));
+const RoomDetails = lazy(() => import("@/pages/RoomDetails"));
+const Restaurants = lazy(() => import("@/pages/Restaurants"));
+const RestaurantDetails = lazy(() => import("@/pages/RestaurantDetails"));
+const Events = lazy(() => import("@/pages/Events"));
+const Offers = lazy(() => import("@/pages/Offers"));
+const Destinations = lazy(() => import("@/pages/Destinations"));
+const About = lazy(() => import("@/pages/About"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const FAQ = lazy(() => import("@/pages/FAQ"));
+const Favorites = lazy(() => import("@/pages/Favorites"));
+const Login = lazy(() => import("@/pages/Login"));
+const Register = lazy(() => import("@/pages/Register"));
+const Privacy = lazy(() => import("@/pages/Privacy"));
+const Terms = lazy(() => import("@/pages/Terms"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 
 export const routes = createBrowserRouter([
@@ -32,112 +33,107 @@ export const routes = createBrowserRouter([
 
             {
                 index: true,
-                element: <Home />
+                element: <Home />,
             },
 
-            // Properties Listing
+            // Properties
             {
                 path: "hotels",
-                element: <Hotels />
+                element: <Hotels />,
             },
-
             {
                 path: "resorts",
-                element: <Resorts />
+                element: <Resorts />,
             },
 
             // Property Details
             {
                 path: "accommodation/:type/:id",
-                element: <PropertyDetails />
+                element: <PropertyDetails />,
             },
 
             // Rooms
             {
                 path: "rooms",
-                element: <Rooms />
+                element: <Rooms />,
             },
-
             {
                 path: "rooms/:id",
-                element: <RoomDetails />
+                element: <RoomDetails />,
             },
+
 
             // Restaurants
             {
                 path: "restaurants",
-                element: <Restaurants />
+                element: <Restaurants />,
             },
-
             {
                 path: "restaurant/:id",
-                element: <RestaurantDetails />
+                element: <RestaurantDetails />,
             },
 
-            // Other Pages
+
+            // General Pages
             {
                 path: "events",
-                element: <Events />
+                element: <Events />,
             },
-
             {
                 path: "offers",
-                element: <Offers />
+                element: <Offers />,
             },
-
             {
                 path: "destinations",
-                element: <Destinations />
+                element: <Destinations />,
             },
-
             {
                 path: "about",
-                element: <About />
+                element: <About />,
             },
-
             {
                 path: "contact",
-                element: <Contact />
+                element: <Contact />,
             },
-
             {
                 path: "faq",
-                element: <FAQ />
+                element: <FAQ />,
             },
 
+            // User
             {
                 path: "favorites",
-                element: <Favorites />
+                element: <Favorites />,
             },
 
             // Auth
             {
                 path: "login",
-                element: <Login />
+                element: <Login />,
             },
-
             {
                 path: "register",
-                element: <Register />
+                element: <Register />,
             },
+
 
             // Legal
             {
                 path: "privacy",
-                element: <Privacy />
+                element: <Privacy />,
             },
-
             {
                 path: "terms",
-                element: <Terms />
+                element: <Terms />,
             },
 
-            // Not Found
+
+            // 404
             {
                 path: "*",
-                element: <NotFound />
-            }
+                element: <NotFound />,
+            },
 
-        ]
-    }
+        ],
+    },
 ]);

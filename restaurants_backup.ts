@@ -1,17 +1,18 @@
-import type { Restaurant } from "@/types/restaurants";
+import { Restaurant } from './src/types/restaurants';
+
 
 export const restaurants: Restaurant[] = [
     // 1 — Arabian Heritage
     {
         id: "restaurant-1",
         slug: "restaurant-1",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295459/restaurants/restaurant-1/main.jpg",
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80&sig=0",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295460/restaurants/restaurant-1/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295461/restaurants/restaurant-1/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295464/restaurants/restaurant-1/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295465/restaurants/restaurant-1/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295466/restaurants/restaurant-1/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80&sig=0",
+            "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1200&q=80&sig=5",
+            "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80&sig=10",
+            "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80&sig=15",
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80&sig=20"
         ],
         name: "مجلس النخيل",
         cuisine: "مأكولات عربية أصيلة",
@@ -66,13 +67,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-2",
         slug: "restaurant-2",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295467/restaurants/restaurant-2/main.jpg",
+        image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1400&q=80&sig=17",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295468/restaurants/restaurant-2/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295470/restaurants/restaurant-2/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295471/restaurants/restaurant-2/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295473/restaurants/restaurant-2/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295474/restaurants/restaurant-2/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1200&q=80&sig=23",
+            "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80&sig=28",
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80&sig=33",
+            "https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&w=1200&q=80&sig=38",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80&sig=43"
         ],
         name: "ليالي الصحراء",
         cuisine: "مأكولات فرنسية",
@@ -125,13 +126,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-3",
         slug: "restaurant-3",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295475/restaurants/restaurant-3/main.jpg",
+        image: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1400&q=80&sig=34",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295476/restaurants/restaurant-3/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295477/restaurants/restaurant-3/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295479/restaurants/restaurant-3/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295480/restaurants/restaurant-3/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295481/restaurants/restaurant-3/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80&sig=46",
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80&sig=51",
+            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80&sig=56",
+            "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80&sig=61",
+            "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80&sig=66"
         ],
         name: "اللؤلؤة الذهبية",
         cuisine: "مأكولات إيطالية",
@@ -185,13 +186,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-4",
         slug: "restaurant-4",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295482/restaurants/restaurant-4/main.jpg",
+        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1400&q=80&sig=51",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295483/restaurants/restaurant-4/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295485/restaurants/restaurant-4/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295486/restaurants/restaurant-4/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295487/restaurants/restaurant-4/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295488/restaurants/restaurant-4/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&w=1200&q=80&sig=69",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80&sig=74",
+            "https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=1200&q=80&sig=79",
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80&sig=84",
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80&sig=89"
         ],
         name: "سما اليابانية",
         cuisine: "مأكولات يابانية",
@@ -245,13 +246,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-5",
         slug: "restaurant-5",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295489/restaurants/restaurant-5/main.jpg",
+        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80&sig=68",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295491/restaurants/restaurant-5/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295492/restaurants/restaurant-5/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295493/restaurants/restaurant-5/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295494/restaurants/restaurant-5/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295495/restaurants/restaurant-5/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80&sig=92",
+            "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80&sig=97",
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80&sig=102",
+            "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80&sig=107",
+            "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1200&q=80&sig=112"
         ],
         name: "نسيم البحر",
         cuisine: "مأكولات بحرية",
@@ -303,13 +304,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-6",
         slug: "restaurant-6",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295496/restaurants/restaurant-6/main.jpg",
+        image: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1400&q=80&sig=85",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295497/restaurants/restaurant-6/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295498/restaurants/restaurant-6/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295499/restaurants/restaurant-6/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295501/restaurants/restaurant-6/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295502/restaurants/restaurant-6/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80&sig=115",
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80&sig=120",
+            "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1200&q=80&sig=125",
+            "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80&sig=130",
+            "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80&sig=135"
         ],
         name: "بهارات الشرق",
         cuisine: "مأكولات هندية ملكية",
@@ -362,13 +363,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-7",
         slug: "restaurant-7",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295503/restaurants/restaurant-7/main.jpg",
+        image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80&sig=102",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295504/restaurants/restaurant-7/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295505/restaurants/restaurant-7/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295506/restaurants/restaurant-7/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295507/restaurants/restaurant-7/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295508/restaurants/restaurant-7/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80&sig=138",
+            "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1200&q=80&sig=143",
+            "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80&sig=148",
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80&sig=153",
+            "https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&w=1200&q=80&sig=158"
         ],
         name: "بيت بيروت",
         cuisine: "مأكولات لبنانية",
@@ -427,13 +428,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-8",
         slug: "restaurant-8",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295510/restaurants/restaurant-8/main.jpg",
+        image: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1400&q=80&sig=119",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295511/restaurants/restaurant-8/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295512/restaurants/restaurant-8/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295513/restaurants/restaurant-8/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295514/restaurants/restaurant-8/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295515/restaurants/restaurant-8/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80&sig=161",
+            "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80&sig=166",
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80&sig=171",
+            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80&sig=176",
+            "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80&sig=181"
         ],
         name: "أمواج جدة",
         cuisine: "بوفيه دولي",
@@ -479,13 +480,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-9",
         slug: "restaurant-9",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295516/restaurants/restaurant-9/main.jpg",
+        image: "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1400&q=80&sig=136",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295517/restaurants/restaurant-9/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295519/restaurants/restaurant-9/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295521/restaurants/restaurant-9/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295523/restaurants/restaurant-9/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295524/restaurants/restaurant-9/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80&sig=184",
+            "https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&w=1200&q=80&sig=189",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80&sig=194",
+            "https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=1200&q=80&sig=199",
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80&sig=204"
         ],
         name: "جوهرة الحجاز",
         cuisine: "مأكولات حجازية",
@@ -534,13 +535,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-10",
         slug: "restaurant-10",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295525/restaurants/restaurant-10/main.jpg",
+        image: "https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&w=1400&q=80&sig=153",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295527/restaurants/restaurant-10/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295528/restaurants/restaurant-10/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295529/restaurants/restaurant-10/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295530/restaurants/restaurant-10/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295531/restaurants/restaurant-10/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80&sig=207",
+            "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80&sig=212",
+            "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80&sig=217",
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80&sig=222",
+            "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80&sig=227"
         ],
         name: "مرسى الذهب",
         cuisine: "ستيك هاوس فاخر",
@@ -587,13 +588,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-11",
         slug: "restaurant-11",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295532/restaurants/restaurant-11/main.jpg",
+        image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1400&q=80&sig=170",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295534/restaurants/restaurant-11/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295536/restaurants/restaurant-11/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295537/restaurants/restaurant-11/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295538/restaurants/restaurant-11/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295540/restaurants/restaurant-11/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=1200&q=80&sig=230",
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80&sig=235",
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80&sig=240",
+            "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1200&q=80&sig=245",
+            "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80&sig=250"
         ],
         name: "قصر إسطنبول",
         cuisine: "مطبخ تركي عثماني",
@@ -646,13 +647,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-12",
         slug: "restaurant-12",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295541/restaurants/restaurant-12/main.jpg",
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80&sig=187",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295542/restaurants/restaurant-12/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295544/restaurants/restaurant-12/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295545/restaurants/restaurant-12/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295546/restaurants/restaurant-12/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295552/restaurants/restaurant-12/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80&sig=253",
+            "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80&sig=258",
+            "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1200&q=80&sig=263",
+            "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80&sig=268",
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80&sig=273"
         ],
         name: "حدائق مراكش",
         cuisine: "مطبخ مغربي",
@@ -709,13 +710,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-13",
         slug: "restaurant-13",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295554/restaurants/restaurant-13/main.jpg",
+        image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=80&sig=204",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295555/restaurants/restaurant-13/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295556/restaurants/restaurant-13/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295557/restaurants/restaurant-13/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295558/restaurants/restaurant-13/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295559/restaurants/restaurant-13/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1200&q=80&sig=276",
+            "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80&sig=281",
+            "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80&sig=286",
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80&sig=291",
+            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80&sig=296"
         ],
         name: "روح الصحراء آسيوي",
         cuisine: "آسيوي فيوجن",
@@ -767,13 +768,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-14",
         slug: "restaurant-14",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295561/restaurants/restaurant-14/main.jpg",
+        image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1400&q=80&sig=221",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295562/restaurants/restaurant-14/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295563/restaurants/restaurant-14/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295564/restaurants/restaurant-14/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295566/restaurants/restaurant-14/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295567/restaurants/restaurant-14/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80&sig=299",
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80&sig=304",
+            "https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&w=1200&q=80&sig=309",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80&sig=314",
+            "https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=1200&q=80&sig=319"
         ],
         name: "أزهار اليالاسكا",
         cuisine: "مطبخ مكسيكي",
@@ -825,13 +826,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-15",
         slug: "restaurant-15",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295568/restaurants/restaurant-15/main.jpg",
+        image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=80&sig=238",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295569/restaurants/restaurant-15/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295570/restaurants/restaurant-15/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295572/restaurants/restaurant-15/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295572/restaurants/restaurant-15/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295573/restaurants/restaurant-15/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80&sig=322",
+            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80&sig=327",
+            "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80&sig=332",
+            "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80&sig=337",
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80&sig=342"
         ],
         name: "حديقة الزعفران النباتية",
         cuisine: "مطبخ نباتي عضوي",
@@ -888,13 +889,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-16",
         slug: "restaurant-16",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295574/restaurants/restaurant-16/main.jpg",
+        image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80&sig=255",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295576/restaurants/restaurant-16/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295577/restaurants/restaurant-16/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295578/restaurants/restaurant-16/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295579/restaurants/restaurant-16/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295580/restaurants/restaurant-16/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80&sig=345",
+            "https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=1200&q=80&sig=350",
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80&sig=355",
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80&sig=360",
+            "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1200&q=80&sig=365"
         ],
         name: "أزهار الياسمين باتيسري",
         cuisine: "حلويات وقهوة",
@@ -948,13 +949,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-17",
         slug: "restaurant-17",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295582/restaurants/restaurant-17/main.jpg",
+        image: "https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=1400&q=80&sig=272",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295583/restaurants/restaurant-17/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295583/restaurants/restaurant-17/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295585/restaurants/restaurant-17/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295586/restaurants/restaurant-17/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295588/restaurants/restaurant-17/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80&sig=368",
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80&sig=373",
+            "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80&sig=378",
+            "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1200&q=80&sig=383",
+            "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1200&q=80&sig=388"
         ],
         name: "أصول نجدية",
         cuisine: "مأكولات نجدية تراثية",
@@ -1008,13 +1009,13 @@ export const restaurants: Restaurant[] = [
     {
         id: "restaurant-18",
         slug: "restaurant-18",
-        image: "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295589/restaurants/restaurant-18/main.jpg",
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80&sig=289",
         gallery: [
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295590/restaurants/restaurant-18/gallery-1.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295591/restaurants/restaurant-18/gallery-2.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295592/restaurants/restaurant-18/gallery-3.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295593/restaurants/restaurant-18/gallery-4.jpg",
-            "https://res.cloudinary.com/yq5z2av7/image/upload/v1785295594/restaurants/restaurant-18/gallery-5.jpg"
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80&sig=391",
+            "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1200&q=80&sig=396",
+            "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80&sig=401",
+            "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1200&q=80&sig=406",
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80&sig=411"
         ],
         name: "ساحل سانتوريني",
         cuisine: "مأكولات يونانية",

@@ -42,14 +42,14 @@ export default function Navbar() {
                         text-charcoal text-lg
                         "
                         >
-                            ن
+                            ل
                         </div>
                         <div>
                             <div className="font-bold text-lg leading-tight">
-                                نُزُل
+                                ليوان
                             </div>
                             <div className="text-[10px] text-muted-foreground">
-                                مجموعة نُزُل السعودية
+                                مجموعة ليوان السعودية
                             </div>
                         </div>
                     </Link>
@@ -82,6 +82,7 @@ export default function Navbar() {
                     {/* Actions */}
                     <div className="flex items-center gap-1">
                         <button
+                            aria-label="تغيير اللغة"
                             className="
                         hidden sm:flex items-center gap-1 
                         px-3 py-2 rounded-md 
@@ -93,6 +94,7 @@ export default function Navbar() {
                         </button>
                         <ModeToggle />
                         <Link
+                            aria-label="المفضلة"
                             to="/favorites"
                             className="
                         relative p-2 rounded-md 
@@ -128,6 +130,9 @@ export default function Navbar() {
                         </Link>
                         {/* Mobile Button */}
                         <button
+                            type="button"
+                            aria-label={openMenu ? "إغلاق القائمة" : "فتح القائمة"}
+                            aria-expanded={openMenu}
                             onClick={() => setOpenMenu(!openMenu)}
                             className="
                         lg:hidden p-2 rounded-md 

@@ -27,9 +27,9 @@ export default function DestinationsSection() {
 
                             {/* content */}
                             <div className="absolute bottom-3 inset-x-3 z-20">
-                                <h6 className="text-xs text-gold tracking-wider">
+                                <span className="text-xs text-gold tracking-wider">
                                     {attraction.category}
-                                </h6>
+                                </span>
                                 <p className="text-sm font-bold text-white">
                                     {attraction.city}
                                 </p>
