@@ -1,5 +1,6 @@
 import PageBanner from "@/components/shared/PageBanner";
 import { attractions } from "@/data/destinations";
+import { optimizeImage } from "@/utils/cloudinary";
 
 import { MapPin } from "lucide-react";
 import { useState } from "react";
@@ -26,7 +27,7 @@ export default function Destinations() {
                     {items.map((item) => (
                         <div className="border border-border rounded-xl group overflow-hidden cursor-pointer" key={item.id}>
                             <div className="aspect-4/3 overflow-hidden">
-                                <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                <img src={optimizeImage(item.image,800,600)} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                             </div>
                             <div className="p-4">
                                 <span className="text-gold text-xs mb-1">{item.category}</span>

@@ -4,28 +4,31 @@ import cloudinary
 import cloudinary.uploader
 from dotenv import load_dotenv
 
+
 # ==========================
 # CONFIG
 # ==========================
 
-ENTITY = "resorts"
-# restaurants
+ENTITY = "destinations"
 # hotels
+# restaurants
 # resorts
 # attractions
 
 INPUT_FILE = f"src/data/{ENTITY}.ts"
 OUTPUT_FILE = f"src/data/{ENTITY}.ts"
 
+
 ID_PREFIX = {
     "hotels": "hotel",
     "restaurants": "restaurant",
     "resorts": "resort",
-    "attractions": "attraction",
+    "destinations": "attraction",
 }[ENTITY]
 
+
 # ==========================
-# CLOUDINARY
+# CLOUDINARY CONFIG
 # ==========================
 
 load_dotenv()
@@ -36,6 +39,7 @@ cloudinary.config(
     api_secret=os.getenv("CLOUDINARY_API_SECRET"),
 )
 
+
 # ==========================
 # READ FILE
 # ==========================
@@ -43,84 +47,134 @@ cloudinary.config(
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
     content = f.read()
 
+
+# ==========================
+# MATCH DATA
+# Supports:
+# image only
+# image + gallery
+# ==========================
+
 pattern = re.compile(
-    rf'id:\s*"({ID_PREFIX}-\d+)".*?image:\s*"([^"]*)".*?gallery:\s*\[(.*?)\]',
+    rf'id:\s*"({ID_PREFIX}-\d+)".*?image:\s*"([^"]*)"(?:.*?gallery:\s*\[(.*?)\])?',
     re.DOTALL,
 )
+
 
 new_content = content
 
 
-def upload_image(url: str, public_id: str) -> str:
-    """
-    Upload image to Cloudinary
-    """
+# ==========================
+# UPLOAD FUNCTION
+# ==========================
+
+def upload_image(url: str, public_id: str):
+
     if not url:
         return url
 
-    print(f"Uploading -> {public_id}")
+    # لو الصورة Cloudinary بالفعل تجاهلها
+    if "cloudinary.com" in url:
+        print(f"SKIP => {public_id}")
+        return url
+
+
+    print(f"Uploading => {public_id}")
+
 
     result = cloudinary.uploader.upload(
         url,
         public_id=public_id,
         overwrite=True,
+        folder=ENTITY,
     )
+
 
     return result["secure_url"]
 
 
+
 # ==========================
-# LOOP
+# PROCESS ITEMS
 # ==========================
 
 for match in pattern.finditer(content):
 
     item_id = match.group(1)
     image_url = match.group(2)
-    gallery_block = match.group(3)
+    gallery_block = match.group(3) or ""
 
-    gallery_urls = re.findall(r'"([^"]*)"', gallery_block)
 
-    print(f"\n====== {item_id} ======")
+    print("\n===================")
+    print(item_id)
+    print("===================")
 
-    # Main Image
+
+    # ----------------------
+    # MAIN IMAGE
+    # ----------------------
+
     if image_url:
-        new_main = upload_image(
+
+        new_image = upload_image(
             image_url,
-            f"{ENTITY}/{item_id}/main",
+            f"{ENTITY}/{item_id}/main"
         )
+
 
         new_content = new_content.replace(
             f'"{image_url}"',
-            f'"{new_main}"',
-            1,
+            f'"{new_image}"',
+            1
         )
 
-    # Gallery
-    for i, old_url in enumerate(gallery_urls, start=1):
+
+
+    # ----------------------
+    # GALLERY
+    # ----------------------
+
+    gallery_urls = re.findall(
+        r'"([^"]*)"',
+        gallery_block
+    )
+
+
+    for index, old_url in enumerate(gallery_urls, start=1):
 
         if not old_url:
             continue
 
+
         new_gallery = upload_image(
             old_url,
-            f"{ENTITY}/{item_id}/gallery-{i}",
+            f"{ENTITY}/{item_id}/gallery-{index}"
         )
+
 
         new_content = new_content.replace(
             f'"{old_url}"',
             f'"{new_gallery}"',
-            1,
+            1
         )
 
+
+
 # ==========================
-# SAVE
+# SAVE FILE
 # ==========================
 
-with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+with open(
+    OUTPUT_FILE,
+    "w",
+    encoding="utf-8"
+) as f:
+
     f.write(new_content)
+
+
 
 print("\n==========================")
 print("DONE ✅")
-print(f"Output File : {OUTPUT_FILE}")
+print(f"Updated : {OUTPUT_FILE}")
 print("==========================")

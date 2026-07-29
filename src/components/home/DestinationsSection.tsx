@@ -1,6 +1,7 @@
 import { attractions } from "@/data/attraction";
 import SectionHeader from "../shared/SectionHeader";
 import { Link } from "react-router-dom";
+import { optimizeImage } from "@/utils/cloudinary";
 
 
 export default function DestinationsSection() {
@@ -17,7 +18,7 @@ export default function DestinationsSection() {
                             className="group relative aspect-3/4 rounded-xl overflow-hidden"
                         >
                             <img
-                                src={attraction.image}
+                                src={optimizeImage(attraction.image,600,800)}
                                 alt={attraction.name}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />

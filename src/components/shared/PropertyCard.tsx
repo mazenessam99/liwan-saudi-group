@@ -1,7 +1,7 @@
 import type { Hotel } from "@/types/hotels";
 import { Link } from "react-router-dom";
 import { Heart, MapPin, Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { optimizeImage } from "@/utils/cloudinary";
 
 interface HotelCardProps {
     hotel: Hotel;
@@ -11,17 +11,12 @@ interface HotelCardProps {
 export default function PropertyCard({ hotel, id}: HotelCardProps) {
 
     return (
-        <motion.div
-            whileHover={{ y: -6 }}
-            transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 20,
-            }}
-            className="relative bg-card rounded-2xl overflow-hidden border border-border group shadow-sm hover:shadow-luxe transition-shadow">
+        <div
+            
+            className="relative bg-card rounded-2xl overflow-hidden border border-border group shadow-sm hover:shadow-luxe duration-500 transition-all hover:-translate-y-2">
             <Link to={`/accommodation/${hotel.type}/${id}`} className="block">
                 <div className="relative aspect-4/3 overflow-hidden">
-                    <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <img src={optimizeImage(hotel.image,800,600)} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-linear-to-t from black/60 via transparent to-transparent" />
                     <button aria-label="إضافة إلى المفضلة" onClick={(e) => e.preventDefault()} className="absolute top-3 left-3 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur bg-black/40 text-white cursor-pointer hover:bg-gold hover:text-charcoal transition-colors">
                         <Heart className="w-5 h-5" />
@@ -76,7 +71,7 @@ export default function PropertyCard({ hotel, id}: HotelCardProps) {
             </Link>
 
 
-        </motion.div>
+        </div>
     );
 }
 

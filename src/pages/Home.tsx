@@ -5,7 +5,7 @@ import HotelsSection from "@/components/home/HotelsSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import RestaurantSection from "@/components/home/RestaurantSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import WhyNuzulSection from "@/components/home/WhyNuzulSection";
+import WhyLiwanSection from "@/components/home/WhyLiwanSection";
 
 export default function Home() {
     return (
@@ -14,7 +14,7 @@ export default function Home() {
             <DestinationsSection/>
             <RestaurantSection/>
             <TestimonialsSection/>
-            <WhyNuzulSection/>
+            <WhyLiwanSection/>
             <FAQSection/>
             <PartnersSection/>
             <CTASection/>

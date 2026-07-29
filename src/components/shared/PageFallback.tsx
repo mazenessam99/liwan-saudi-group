@@ -14,7 +14,7 @@ export default function PageFallback() {
             <div
                 className="
                 absolute inset-0 
-                bg-gradient-to-br 
+                bg-linear-to-br 
                 from-gold/10 
                 via-transparent 
                 to-palm/10

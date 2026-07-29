@@ -1,3 +1,4 @@
+import { optimizeImage } from "@/utils/cloudinary";
 import { motion } from "framer-motion";
 interface HeroProps {
     image: string;
@@ -10,7 +11,7 @@ interface HeroProps {
 export default function InnerHero({ image, eyebrow, title, description }: HeroProps) {
     return (
         <section className="relative h-[70vh] min-h-95 flex items-center overflow-hidden">
-            <img src={image} className='absolute inset-0 w-full h-full  object-cover' alt='aboutHero' />
+            <img src={optimizeImage(image,1920,1080)} className='absolute inset-0 w-full h-full  object-cover' alt='aboutHero' />
             <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/40' />
             <div className="container mx-auto px-4 lg:px-8 relative z-10 text-white">
                 <motion.div
