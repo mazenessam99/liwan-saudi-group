@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import PageBanner from "@/components/shared/PageBanner";
 import RestaurantCard from "@/components/shared/RestaurantCard";
-import { restaurants } from "@/data/restaurants";
+import EmptyState from "@/components/shared/EmptyState";
 import { useListFilters } from "@/hooks/useListFilters";
+import { getAllRestaurants } from "@/lib/api/restaurants";
 import {
     Select,
     SelectContent,
@@ -11,9 +13,30 @@ import {
 } from "@/components/ui/select";
 
 import { Search, SlidersHorizontal } from "lucide-react";
-import EmptyState from "@/components/shared/EmptyState";
 
 export default function Restaurants() {
+    const [restaurants, setRestaurants] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        async function fetchRestaurants() {
+            try {
+                const data = await getAllRestaurants();
+
+                setRestaurants(data);
+            } catch (error) {
+                console.error("Restaurants error:", error);
+
+                setError("حدث خطأ أثناء تحميل المطاعم");
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchRestaurants();
+    }, []);
+
     const {
         search,
         setSearch,
@@ -27,6 +50,22 @@ export default function Restaurants() {
         getCity: (restaurant: any) => restaurant.city,
     });
 
+    if (loading) {
+        return (
+            <main className="container mx-auto px-4 py-20 text-center">
+                جاري تحميل المطاعم...
+            </main>
+        );
+    }
+
+    if (error) {
+        return (
+            <main className="container mx-auto px-4 py-20 text-center">
+                <p className="text-red-500">{error}</p>
+            </main>
+        );
+    }
+
     return (
         <main>
             <PageBanner
@@ -38,10 +77,13 @@ export default function Restaurants() {
                 aria-label="قائمة المطاعم"
                 className="container mx-auto pt-12 px-4 lg:px-8"
             >
-                <form className="bg-card border border-border rounded-2xl p-4 mb-8 grid md:grid-cols-2 gap-3">
+                <form
+                    className="bg-card border border-border rounded-2xl p-4 mb-8 grid md:grid-cols-2 gap-3"
+                >
                     {/* Search */}
                     <div className="relative">
                         <Search className="absolute top-1/2 inset-s-4 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+
                         <input
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
@@ -56,7 +98,6 @@ export default function Restaurants() {
                         value={selectedCity}
                         onValueChange={setSelectedCity}
                     >
-
                         <SelectTrigger className="h-12 w-full bg-background border-border rounded-lg px-3 text-sm focus:ring-0 focus-visible:ring-0">
                             <SelectValue placeholder="كل المدن" />
                         </SelectTrigger>
@@ -85,21 +126,27 @@ export default function Restaurants() {
                     </Select>
                 </form>
 
+                {/* Results count */}
                 <div className="flex items-center gap-2 mb-4 text-sm">
                     <SlidersHorizontal className="w-4 h-4" />
-                    <span className="text-gold">{filteredRestaurants.length}</span>
+
+                    <span className="text-gold">
+                        {filteredRestaurants.length}
+                    </span>
+
                     نتيجة
                 </div>
-                <section aria-label="properties">
-                {
-                    filteredRestaurants.length == 0 ?
+
+                {/* Restaurants */}
+                <section aria-label="المطاعم">
+                    {filteredRestaurants.length === 0 ? (
                         <EmptyState
                             title="لا توجد نتائج مطابقة"
                             description="جرّب تغيير كلمة البحث أو إزالة بعض الفلاتر للعثور على نتائج"
                             actionLabel="مسح كل الفلاتر"
                             onAction={clearFilters}
-                        /> :
-
+                        />
+                    ) : (
                         <div className="grid md:grid-cols-3 gap-6">
                             {filteredRestaurants.map((restaurant) => (
                                 <RestaurantCard
@@ -107,12 +154,10 @@ export default function Restaurants() {
                                     key={restaurant.id}
                                 />
                             ))}
-
                         </div>
-                }
+                    )}
                 </section>
             </section>
-
         </main>
     );
 }
