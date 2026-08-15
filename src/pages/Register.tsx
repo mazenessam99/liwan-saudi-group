@@ -19,7 +19,7 @@ import { signUpSchema, type SignUpFormValues } from '../schemas/auth-schema'
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const { register, handleSubmit, formState: { errors, isSubmitting },reset } = useForm<SignUpFormValues>({
+    const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<SignUpFormValues>({
         resolver: zodResolver(signUpSchema),
         mode: "onBlur",
     })

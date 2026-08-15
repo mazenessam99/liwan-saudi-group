@@ -10,7 +10,7 @@ import { signInSchema, type SignInFormValues } from '../schemas/auth-schema'
 
 export default function Login() {
     const [show, setShow] = useState(false);
-    const {register,handleSubmit, formState: { errors, isSubmitting },reset}=useForm<SignInFormValues>({
+    const {register,handleSubmit, formState: { errors, isSubmitting }}=useForm<SignInFormValues>({
         resolver:zodResolver(signInSchema),
         mode:'onBlur'
     })
