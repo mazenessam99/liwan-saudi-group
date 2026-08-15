@@ -19,7 +19,7 @@ import { signUpSchema, type SignUpFormValues } from '../schemas/auth-schema'
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignUpFormValues>({
+    const { register, handleSubmit, formState: { errors, isSubmitting },reset } = useForm<SignUpFormValues>({
         resolver: zodResolver(signUpSchema),
         mode: "onBlur",
     })
@@ -29,7 +29,7 @@ export default function SignUp() {
     };
 
     return (
-        <div className="container mx-auto px-4 lg:px-8 min-h-[calc(100vh-10rem)] grid lg:grid-cols-2">
+        <div className="mt-4 min-h-[calc(100vh-10rem)] grid lg:grid-cols-2">
 
             {/* Sign Up Form */}
             <div className="flex items-center justify-center p-6 md:p-12">
@@ -76,11 +76,24 @@ export default function SignUp() {
 
                                 <User className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                             </div>
-                            {errors.firstName && <p className="text-red-500 text-sm" role="alert">{errors.firstName.message}</p>}
+                            {errors.firstName && (
+                                <div
+                                    className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                    role="alert"
+                                >
+                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                        !
+                                    </span>
+
+                                    <p className="text-xs font-medium text-red-500">
+                                        {errors.firstName.message}
+                                    </p>
+                                </div>
+                            )}
                         </div>
 
-                        {/* Last Name */}
-                        <div>
+                    {/* Last Name */}
+                    <div>
                             <Label className="mb-2.5">
                                 الاسم الأخير
                             </Label>
@@ -96,8 +109,21 @@ export default function SignUp() {
 
                                 <User className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                             </div>
-                            {errors.lastName && <p className="text-red-500 text-sm" role="alert">{errors.lastName.message}</p>}
-                        </div>
+                            {errors.lastName && (
+                                <div
+                                    className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                    role="alert"
+                                >
+                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                        !
+                                    </span>
+
+                                    <p className="text-xs font-medium text-red-500">
+                                        {errors.lastName.message}
+                                    </p>
+                                </div>
+                            )}
+                    </div>
 
                     </div>
 
@@ -118,7 +144,20 @@ export default function SignUp() {
 
                             <Phone className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                         </div>
-                        {errors.phone && <p className="text-red-500 text-sm" role="alert">{errors.phone.message}</p>}
+                        {errors.phone && (
+                            <div
+                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                role="alert"
+                            >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                    !
+                                </span>
+
+                                <p className="text-xs font-medium text-red-500">
+                                    {errors.phone.message}
+                                </p>
+                            </div>
+                        )}
                     </div>
 
                     {/* Email */}
@@ -139,9 +178,18 @@ export default function SignUp() {
                             <Mail className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                         </div>
                         {errors.email && (
-                            <p className="text-red-500 text-sm">
-                                {errors.email.message}
-                            </p>
+                            <div
+                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                role="alert"
+                            >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                    !
+                                </span>
+
+                                <p className="text-xs font-medium text-red-500">
+                                    {errors.email.message}
+                                </p>
+                            </div>
                         )}
                     </div>
 
@@ -175,7 +223,20 @@ export default function SignUp() {
                                 )}
                             </Button>
                         </div>
-                        {errors.password && <p className="text-red-500 text-sm" role="alert">{errors.password.message}</p>}
+                        {errors.password && (
+                            <div
+                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                role="alert"
+                            >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                    !
+                                </span>
+
+                                <p className="text-xs font-medium text-red-500">
+                                    {errors.password.message}
+                                </p>
+                            </div>
+                        )}
                     </div>
 
                     {/* Confirm Password */}
@@ -211,14 +272,25 @@ export default function SignUp() {
                             </Button>
                         </div>
                         {errors.confirmPassword && (
-                            <p className="text-red-500 text-sm" role="alert">{errors.confirmPassword.message}</p>
+                            <div
+                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                role="alert"
+                            >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                    !
+                                </span>
+
+                                <p className="text-xs font-medium text-red-500">
+                                    {errors.confirmPassword.message}
+                                </p>
+                            </div>
                         )}
                     </div>
 
                     {/* Submit */}
                     <Button
                         className="w-full gradient-gold flex items-center justify-center py-3.5 gap-2 text-charcoal font-bold hover:scale-[1.01] transition disabled:opacity-60"
-                        type="submit"  disabled={isSubmitting}
+                        type="submit" disabled={isSubmitting}
                     >
                         <UserPlus className="w-4 h-4" />
                         {isSubmitting ? 'ﺟﺎري اﻟﺘﺴﺠﻴﻞ...' : 'إﻧﺸﺎء ﺣﺴﺎب'}
@@ -250,8 +322,8 @@ export default function SignUp() {
                     <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
                 </div>
 
-                <div className="absolute bottom-4 right-4 z-10 text-white">
-                    <h2 className="font-bold text-4xl mb-3">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white text-center">
+                    <h2 className="font-bold text-5xl mb-7">
                         انضم إلى ليوان
                     </h2>
 

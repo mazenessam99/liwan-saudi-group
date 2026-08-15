@@ -1,14 +1,25 @@
-
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { signInSchema, type SignInFormValues } from '../schemas/auth-schema'
+
 export default function Login() {
     const [show, setShow] = useState(false);
+    const {register,handleSubmit, formState: { errors, isSubmitting },reset}=useForm<SignInFormValues>({
+        resolver:zodResolver(signInSchema),
+        mode:'onBlur'
+    })
+
+    const onSubmit = (data: any) => {
+        console.log(data);
+    };
     return (
-        <div className="container mx-auto px-4 lg:px-8 min-h-[calc(100vh-10rem)] grid lg:grid-cols-2">
+        <div className="md:mt-8 min-h-[calc(100vh-10rem)] grid lg:grid-cols-2">
             {/*login_image */}
             <div className="hidden lg:block relative overflow-hidden group">
                 <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
@@ -33,7 +44,7 @@ export default function Login() {
 
             {/* Login Form */}
             <div className="flex items-center justify-center p-6 md:p-12">
-                <motion.form autoComplete="off" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md space-y-5">
+                <motion.form onSubmit={handleSubmit(onSubmit)} autoComplete="off" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md space-y-5">
                     <div className="text-center mb-6">
                         <div className="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center font-bold text-charcoal text-2xl mb-3 gradient-gold">ن</div>
                         <h2 className="font-bold text-3xl">تسجيل الدخول</h2>
@@ -42,23 +53,51 @@ export default function Login() {
                     <div>
                         <Label className="mb-2.5">البريد الإلكتروني</Label>
                         <div className="relative">
-                            <input type="email" autoComplete="username" className="w-full bg-card  border border-border rounded-lg ps-10 py-3  outline-0 focus:border-gold " placeholder="you@example.com" />
+                            <input type="email" autoComplete="username" {...register('email')} className="w-full bg-card  border border-border rounded-lg ps-10 py-3  outline-0 focus:border-gold " placeholder="you@example.com" />
                             <Mail className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3  text-muted-foreground" />
                         </div>
+                        {errors.email && (
+                            <div
+                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                role="alert"
+                            >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                    !
+                                </span>
+
+                                <p className="text-xs font-medium text-red-500">
+                                    {errors.email.message}
+                                </p>
+                            </div>
+                        )}
                     </div>
                     <div className="mt-8">
                         <Label className="mb-2.5">كلمة المرور</Label>
                         <div className="relative">
-                            <input type={show ? "text" : "password"} autoComplete="new-password" className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold" placeholder="••••••••" />
+                            <input type={show ? "text" : "password"} autoComplete="new-password" {...register('password')} className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold" placeholder="••••••••" />
                             <Lock className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                             <Button type="button" size="icon" className="absolute top-1/2 -translate-y-1/2 inset-e-3 h-8 w-8 mt-0.5 p-0 bg-transparent hover:bg-transparent text-muted-foreground" onClick={() => setShow(!show)}>
                                 {show ? <EyeOff className="w-5 h-5" /> : <Eye className="w-4 h-4" />}
                             </Button>
                         </div>
+                        {errors.password && (
+                            <div
+                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
+                                role="alert"
+                            >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
+                                    !
+                                </span>
+
+                                <p className="text-xs font-medium text-red-500">
+                                    {errors.password.message}
+                                </p>
+                            </div>
+                        )}
                     </div>
-                    <Button className="w-full gradient-gold flex items-center justify-center py-3.5 gap-2 text-charcoal font-bold hover:scale-[1.01] transition disabled:opacity-60" type="submit">
+                    <Button className="w-full gradient-gold flex items-center justify-center py-3.5 gap-2 text-charcoal font-bold hover:scale-[1.01] transition disabled:opacity-60" type="submit" disabled={isSubmitting}>
                         <LogIn className="w-4 h-4"/> 
-                        تسجيل الدخول
+                        {isSubmitting ? 'ﺟﺎري الدخول...' : 'تسجيل الدخول '}
                     </Button>
                     <p className="text-sm text-center text-muted-foreground">ليس لديك حساب؟ <Link to={'/register'} className="text-gold font-semibold hover:underline">أنشى حساب</Link></p>
 
