@@ -11,21 +11,34 @@ import {
     UserPlus,
 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link,useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signUpSchema, type SignUpFormValues } from '../schemas/auth-schema'
+import { signUpUser } from "../services/auth.service";
+import { getReadableAuthError } from "../utils/auth-errors";
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<SignUpFormValues>({
+    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<SignUpFormValues>({
         resolver: zodResolver(signUpSchema),
         mode: "onBlur",
     })
+    const navigate=useNavigate()
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const onSubmit = async (values: SignUpFormValues) => {
+        const {error} = await signUpUser(values)
+        if (error) {
+            toast.error(getReadableAuthError(error.message));
+            return;
+        }
+        reset();
+        toast.success("تم إنشاء الحساب بنجاح 🎉");
+        setTimeout(() => {
+            navigate('/login')
+        },2000);
     };
 
     return (
@@ -92,8 +105,8 @@ export default function SignUp() {
                             )}
                         </div>
 
-                    {/* Last Name */}
-                    <div>
+                        {/* Last Name */}
+                        <div>
                             <Label className="mb-2.5">
                                 الاسم الأخير
                             </Label>
@@ -123,7 +136,7 @@ export default function SignUp() {
                                     </p>
                                 </div>
                             )}
-                    </div>
+                        </div>
 
                     </div>
 
@@ -286,6 +299,7 @@ export default function SignUp() {
                             </div>
                         )}
                     </div>
+
 
                     {/* Submit */}
                     <Button

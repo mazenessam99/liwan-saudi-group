@@ -3,20 +3,32 @@ import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signInSchema, type SignInFormValues } from '../schemas/auth-schema'
-
+import { signInUser } from "../services/auth.service";
+import toast from "react-hot-toast";
+import { getReadableAuthError } from "../utils/auth-errors";
 export default function Login() {
     const [show, setShow] = useState(false);
-    const {register,handleSubmit, formState: { errors, isSubmitting }}=useForm<SignInFormValues>({
+    const {register,handleSubmit, formState: { errors, isSubmitting },reset}=useForm<SignInFormValues>({
         resolver:zodResolver(signInSchema),
         mode:'onBlur'
     })
+    const navigate=useNavigate()
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const onSubmit =async (values: SignInFormValues) => {
+        const {error} =await signInUser(values)
+        if(error){
+            toast.error(getReadableAuthError(error.message));
+            return;
+        }
+        reset(),
+        toast.success("تم تسجيل الدخول بنجاح 🎉");
+        setTimeout(() => {
+            navigate('/')
+        }, 1000);
     };
     return (
         <div className="md:mt-8 min-h-[calc(100vh-10rem)] grid lg:grid-cols-2">
@@ -74,7 +86,7 @@ export default function Login() {
                     <div className="mt-8">
                         <Label className="mb-2.5">كلمة المرور</Label>
                         <div className="relative">
-                            <input type={show ? "text" : "password"} autoComplete="new-password" {...register('password')} className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold" placeholder="••••••••" />
+                            <input type={show ? "text" : "password"} autoComplete="current-password" {...register('password')} className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold" placeholder="••••••••" />
                             <Lock className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                             <Button type="button" size="icon" className="absolute top-1/2 -translate-y-1/2 inset-e-3 h-8 w-8 mt-0.5 p-0 bg-transparent hover:bg-transparent text-muted-foreground" onClick={() => setShow(!show)}>
                                 {show ? <EyeOff className="w-5 h-5" /> : <Eye className="w-4 h-4" />}
