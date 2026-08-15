@@ -12,10 +12,21 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { signUpSchema, type SignUpFormValues } from '../schemas/auth-schema'
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignUpFormValues>({
+        resolver: zodResolver(signUpSchema),
+        mode: "onBlur",
+    })
+
+    const onSubmit = (data: any) => {
+        console.log(data);
+    };
 
     return (
         <div className="container mx-auto px-4 lg:px-8 min-h-[calc(100vh-10rem)] grid lg:grid-cols-2">
@@ -23,6 +34,7 @@ export default function SignUp() {
             {/* Sign Up Form */}
             <div className="flex items-center justify-center p-6 md:p-12">
                 <motion.form
+                    onSubmit={handleSubmit(onSubmit)}
                     autoComplete="off"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -56,6 +68,7 @@ export default function SignUp() {
                             <div className="relative">
                                 <input
                                     type="text"
+                                    {...register('firstName')}
                                     autoComplete="given-name"
                                     className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
                                     placeholder="مازن"
@@ -63,6 +76,7 @@ export default function SignUp() {
 
                                 <User className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                             </div>
+                            {errors.firstName && <p className="text-red-500 text-sm" role="alert">{errors.firstName.message}</p>}
                         </div>
 
                         {/* Last Name */}
@@ -74,6 +88,7 @@ export default function SignUp() {
                             <div className="relative">
                                 <input
                                     type="text"
+                                    {...register("lastName")}
                                     autoComplete="family-name"
                                     className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
                                     placeholder="محمد"
@@ -81,6 +96,7 @@ export default function SignUp() {
 
                                 <User className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                             </div>
+                            {errors.lastName && <p className="text-red-500 text-sm" role="alert">{errors.lastName.message}</p>}
                         </div>
 
                     </div>
@@ -94,6 +110,7 @@ export default function SignUp() {
                         <div className="relative">
                             <input
                                 type="tel"
+                                {...register("phone")}
                                 autoComplete="tel"
                                 className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
                                 placeholder="+966 5X XXX XXXX"
@@ -101,6 +118,7 @@ export default function SignUp() {
 
                             <Phone className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                         </div>
+                        {errors.phone && <p className="text-red-500 text-sm" role="alert">{errors.phone.message}</p>}
                     </div>
 
                     {/* Email */}
@@ -112,6 +130,7 @@ export default function SignUp() {
                         <div className="relative">
                             <input
                                 type="email"
+                                {...register("email")}
                                 autoComplete="email"
                                 className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
                                 placeholder="you@example.com"
@@ -119,6 +138,11 @@ export default function SignUp() {
 
                             <Mail className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
                         </div>
+                        {errors.email && (
+                            <p className="text-red-500 text-sm">
+                                {errors.email.message}
+                            </p>
+                        )}
                     </div>
 
                     {/* Password */}
@@ -130,6 +154,7 @@ export default function SignUp() {
                         <div className="relative">
                             <input
                                 type={showPassword ? "text" : "password"}
+                                {...register("password")}
                                 autoComplete="new-password"
                                 className="w-full bg-card border border-border rounded-lg ps-10 pe-12 py-3 outline-0 focus:border-gold"
                                 placeholder="••••••••"
@@ -150,6 +175,7 @@ export default function SignUp() {
                                 )}
                             </Button>
                         </div>
+                        {errors.password && <p className="text-red-500 text-sm" role="alert">{errors.password.message}</p>}
                     </div>
 
                     {/* Confirm Password */}
@@ -161,6 +187,7 @@ export default function SignUp() {
                         <div className="relative">
                             <input
                                 type={showConfirmPassword ? "text" : "password"}
+                                {...register('confirmPassword')}
                                 autoComplete="new-password"
                                 className="w-full bg-card border border-border rounded-lg ps-10 pe-12 py-3 outline-0 focus:border-gold"
                                 placeholder="••••••••"
@@ -183,15 +210,18 @@ export default function SignUp() {
                                 )}
                             </Button>
                         </div>
+                        {errors.confirmPassword && (
+                            <p className="text-red-500 text-sm" role="alert">{errors.confirmPassword.message}</p>
+                        )}
                     </div>
 
                     {/* Submit */}
                     <Button
                         className="w-full gradient-gold flex items-center justify-center py-3.5 gap-2 text-charcoal font-bold hover:scale-[1.01] transition disabled:opacity-60"
-                        type="submit"
+                        type="submit"  disabled={isSubmitting}
                     >
                         <UserPlus className="w-4 h-4" />
-                        إنشاء الحساب
+                        {isSubmitting ? 'ﺟﺎري اﻟﺘﺴﺠﻴﻞ...' : 'إﻧﺸﺎء ﺣﺴﺎب'}
                     </Button>
 
                     {/* Login Link */}
@@ -207,7 +237,7 @@ export default function SignUp() {
 
                 </motion.form>
             </div>
-            
+
             {/* Sign Up Image */}
             <div className="hidden lg:block relative overflow-hidden group">
                 <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
