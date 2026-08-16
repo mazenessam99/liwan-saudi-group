@@ -75,7 +75,7 @@ export default function SignUp() {
                     </div>
 
                     {/* Phone */}
-                        <FormField label="رقم الهاتف" type='tel' placeholder="+966142586347" registration={register("phone")} error={errors.phone?.message} icon={Phone} autoComplete="username"/>
+                        <FormField label="رقم الهاتف" type='tel' placeholder="+966 5X XXX XXXX" registration={register("phone")} error={errors.phone?.message} icon={Phone} autoComplete="username"/>
                     {/* Email */}
                         <FormField label="البريد الإلكتروني" type='email' placeholder="you@example.com" registration={register("email")} error={errors.email?.message} icon={Mail} autoComplete="username"/>
                     {/* Password */}

@@ -59,7 +59,7 @@ export default function Login() {
             <div className="flex items-center justify-center p-6 md:p-12">
                 <motion.form onSubmit={handleSubmit(onSubmit)} autoComplete="off" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md space-y-5">
                     <div className="text-center mb-6">
-                        <div className="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center font-bold text-charcoal text-2xl mb-3 gradient-gold">ن</div>
+                        <div className="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center font-bold text-charcoal text-2xl mb-3 gradient-gold">ل</div>
                         <h2 className="font-bold text-3xl">تسجيل الدخول</h2>
                         <p className="text-muted-foreground text-sm mt-1">أدخل بياناتك للمتابعة</p>
                     </div>
