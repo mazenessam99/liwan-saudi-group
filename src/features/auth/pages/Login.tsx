@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react";
-import { useState } from "react";
+import { LogIn, Mail } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,8 +8,11 @@ import { signInSchema, type SignInFormValues } from '../schemas/auth-schema'
 import { signInUser } from "../services/auth.service";
 import toast from "react-hot-toast";
 import { getReadableAuthError } from "../utils/auth-errors";
+import FormField from "@/components/shared/FormField";
+import PasswordField from "@/components/shared/PasswordField";
+
 export default function Login() {
-    const [show, setShow] = useState(false);
+
     const {register,handleSubmit, formState: { errors, isSubmitting },reset}=useForm<SignInFormValues>({
         resolver:zodResolver(signInSchema),
         mode:'onBlur'
@@ -62,51 +63,11 @@ export default function Login() {
                         <h2 className="font-bold text-3xl">تسجيل الدخول</h2>
                         <p className="text-muted-foreground text-sm mt-1">أدخل بياناتك للمتابعة</p>
                     </div>
-                    <div>
-                        <Label className="mb-2.5">البريد الإلكتروني</Label>
-                        <div className="relative">
-                            <input type="email" autoComplete="username" {...register('email')} className="w-full bg-card  border border-border rounded-lg ps-10 py-3  outline-0 focus:border-gold " placeholder="you@example.com" />
-                            <Mail className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3  text-muted-foreground" />
-                        </div>
-                        {errors.email && (
-                            <div
-                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                role="alert"
-                            >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                    !
-                                </span>
-
-                                <p className="text-xs font-medium text-red-500">
-                                    {errors.email.message}
-                                </p>
-                            </div>
-                        )}
-                    </div>
-                    <div className="mt-8">
-                        <Label className="mb-2.5">كلمة المرور</Label>
-                        <div className="relative">
-                            <input type={show ? "text" : "password"} autoComplete="current-password" {...register('password')} className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold" placeholder="••••••••" />
-                            <Lock className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
-                            <Button type="button" size="icon" className="absolute top-1/2 -translate-y-1/2 inset-e-3 h-8 w-8 mt-0.5 p-0 bg-transparent hover:bg-transparent text-muted-foreground" onClick={() => setShow(!show)}>
-                                {show ? <EyeOff className="w-5 h-5" /> : <Eye className="w-4 h-4" />}
-                            </Button>
-                        </div>
-                        {errors.password && (
-                            <div
-                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                role="alert"
-                            >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                    !
-                                </span>
-
-                                <p className="text-xs font-medium text-red-500">
-                                    {errors.password.message}
-                                </p>
-                            </div>
-                        )}
-                    </div>
+                    
+                    <FormField label="البريد الإلكتروني" type='email' placeholder="you@example.com" registration={register("email")} error={errors.email?.message} icon={Mail} autoComplete="username"/>
+                    
+                    <PasswordField label="كلمة المرور" registration={register('password')} error={errors.password?.message} autoComplete="current-password"/>
+                    
                     <Button className="w-full gradient-gold flex items-center justify-center py-3.5 gap-2 text-charcoal font-bold hover:scale-[1.01] transition disabled:opacity-60" type="submit" disabled={isSubmitting}>
                         <LogIn className="w-4 h-4"/> 
                         {isSubmitting ? 'ﺟﺎري الدخول...' : 'تسجيل الدخول '}

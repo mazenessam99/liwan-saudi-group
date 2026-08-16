@@ -1,16 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import {
-    Eye,
-    EyeOff,
-    Lock,
     Mail,
     Phone,
     User,
     UserPlus,
 } from "lucide-react";
-import { useState } from "react";
+
 import toast from "react-hot-toast";
 import { Link,useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
@@ -19,9 +15,10 @@ import { signUpSchema, type SignUpFormValues } from '../schemas/auth-schema'
 import { signUpUser } from "../services/auth.service";
 import { getReadableAuthError } from "../utils/auth-errors";
 
+import FormField from "@/components/shared/FormField";
+import PasswordField from "@/components/shared/PasswordField";
+
 export default function SignUp() {
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<SignUpFormValues>({
         resolver: zodResolver(signUpSchema),
         mode: "onBlur",
@@ -71,236 +68,21 @@ export default function SignUp() {
 
                     {/* First & Last Name */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
                         {/* First Name */}
-                        <div>
-                            <Label className="mb-2.5">
-                                الاسم الأول
-                            </Label>
-
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    {...register('firstName')}
-                                    autoComplete="given-name"
-                                    className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
-                                    placeholder="مازن"
-                                />
-
-                                <User className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
-                            </div>
-                            {errors.firstName && (
-                                <div
-                                    className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                    role="alert"
-                                >
-                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                        !
-                                    </span>
-
-                                    <p className="text-xs font-medium text-red-500">
-                                        {errors.firstName.message}
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-
+                        <FormField label=" الإسم الأول" type='text' placeholder="مازن" registration={register("email")} error={errors.email?.message} icon={User} autoComplete="username"/>
                         {/* Last Name */}
-                        <div>
-                            <Label className="mb-2.5">
-                                الاسم الأخير
-                            </Label>
-
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    {...register("lastName")}
-                                    autoComplete="family-name"
-                                    className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
-                                    placeholder="محمد"
-                                />
-
-                                <User className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
-                            </div>
-                            {errors.lastName && (
-                                <div
-                                    className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                    role="alert"
-                                >
-                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                        !
-                                    </span>
-
-                                    <p className="text-xs font-medium text-red-500">
-                                        {errors.lastName.message}
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-
+                        <FormField label="الإسم الأخير " type='text' placeholder="محمد" registration={register("email")} error={errors.email?.message} icon={User} autoComplete="username"/>
                     </div>
 
                     {/* Phone */}
-                    <div>
-                        <Label className="mb-2.5">
-                            رقم الهاتف
-                        </Label>
-
-                        <div className="relative">
-                            <input
-                                type="tel"
-                                {...register("phone")}
-                                autoComplete="tel"
-                                className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
-                                placeholder="+966 5X XXX XXXX"
-                            />
-
-                            <Phone className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
-                        </div>
-                        {errors.phone && (
-                            <div
-                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                role="alert"
-                            >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                    !
-                                </span>
-
-                                <p className="text-xs font-medium text-red-500">
-                                    {errors.phone.message}
-                                </p>
-                            </div>
-                        )}
-                    </div>
-
+                        <FormField label="رقم الهاتف" type='tel' placeholder="+966142586347" registration={register("phone")} error={errors.phone?.message} icon={Phone} autoComplete="username"/>
                     {/* Email */}
-                    <div>
-                        <Label className="mb-2.5">
-                            البريد الإلكتروني
-                        </Label>
-
-                        <div className="relative">
-                            <input
-                                type="email"
-                                {...register("email")}
-                                autoComplete="email"
-                                className="w-full bg-card border border-border rounded-lg ps-10 py-3 outline-0 focus:border-gold"
-                                placeholder="you@example.com"
-                            />
-
-                            <Mail className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
-                        </div>
-                        {errors.email && (
-                            <div
-                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                role="alert"
-                            >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                    !
-                                </span>
-
-                                <p className="text-xs font-medium text-red-500">
-                                    {errors.email.message}
-                                </p>
-                            </div>
-                        )}
-                    </div>
-
+                        <FormField label="البريد الإلكتروني" type='email' placeholder="you@example.com" registration={register("email")} error={errors.email?.message} icon={Mail} autoComplete="username"/>
                     {/* Password */}
-                    <div>
-                        <Label className="mb-2.5">
-                            كلمة المرور
-                        </Label>
-
-                        <div className="relative">
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                {...register("password")}
-                                autoComplete="new-password"
-                                className="w-full bg-card border border-border rounded-lg ps-10 pe-12 py-3 outline-0 focus:border-gold"
-                                placeholder="••••••••"
-                            />
-
-                            <Lock className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
-
-                            <Button
-                                type="button"
-                                size="icon"
-                                className="absolute top-1/2 -translate-y-1/2 inset-e-3 h-8 w-8 mt-0.5 p-0 bg-transparent hover:bg-transparent text-muted-foreground"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? (
-                                    <EyeOff className="w-5 h-5" />
-                                ) : (
-                                    <Eye className="w-5 h-5" />
-                                )}
-                            </Button>
-                        </div>
-                        {errors.password && (
-                            <div
-                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                role="alert"
-                            >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                    !
-                                </span>
-
-                                <p className="text-xs font-medium text-red-500">
-                                    {errors.password.message}
-                                </p>
-                            </div>
-                        )}
-                    </div>
-
+                        <PasswordField label="كلمة المرور" registration={register('password')} error={errors.password?.message} autoComplete="current-password"/>
                     {/* Confirm Password */}
-                    <div>
-                        <Label className="mb-2.5">
-                            تأكيد كلمة المرور
-                        </Label>
-
-                        <div className="relative">
-                            <input
-                                type={showConfirmPassword ? "text" : "password"}
-                                {...register('confirmPassword')}
-                                autoComplete="new-password"
-                                className="w-full bg-card border border-border rounded-lg ps-10 pe-12 py-3 outline-0 focus:border-gold"
-                                placeholder="••••••••"
-                            />
-
-                            <Lock className="absolute w-5 h-5 top-1/2 -translate-y-1/2 inset-s-3 text-muted-foreground" />
-
-                            <Button
-                                type="button"
-                                size="icon"
-                                className="absolute top-1/2 -translate-y-1/2 inset-e-3 h-8 w-8 mt-0.5 p-0 bg-transparent hover:bg-transparent text-muted-foreground"
-                                onClick={() =>
-                                    setShowConfirmPassword(!showConfirmPassword)
-                                }
-                            >
-                                {showConfirmPassword ? (
-                                    <EyeOff className="w-5 h-5" />
-                                ) : (
-                                    <Eye className="w-5 h-5" />
-                                )}
-                            </Button>
-                        </div>
-                        {errors.confirmPassword && (
-                            <div
-                                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-red-500/15 bg-red-500/5 px-4 py-2.5 text-center"
-                                role="alert"
-                            >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-xs font-bold text-red-500">
-                                    !
-                                </span>
-
-                                <p className="text-xs font-medium text-red-500">
-                                    {errors.confirmPassword.message}
-                                </p>
-                            </div>
-                        )}
-                    </div>
-
-
+                        <PasswordField label="تأكيد كلمة المرور" registration={register('confirmPassword')} error={errors.confirmPassword?.message} autoComplete="new-password"/>
+                    
                     {/* Submit */}
                     <Button
                         className="w-full gradient-gold flex items-center justify-center py-3.5 gap-2 text-charcoal font-bold hover:scale-[1.01] transition disabled:opacity-60"
