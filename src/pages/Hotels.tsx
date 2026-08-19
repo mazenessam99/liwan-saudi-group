@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PropertyListing from "@/components/shared/PropertyListing";
-import { getHotels } from "@/services/propertyService";
+import { getProperties } from "@/services/propertyService";
 import type { Hotel } from "@/types/hotels";
 
 export default function Hotels() {
@@ -11,7 +11,7 @@ export default function Hotels() {
   useEffect(() => {
     async function fetchHotels() {
       try {
-        const data = await getHotels();
+        const data = await getProperties('hotel');
         setHotels(data);
       } catch (error) {
         console.error(error);

@@ -1,8 +1,8 @@
-import { getHotels } from "@/services/propertyService";
+import { getProperties } from "@/services/propertyService";
 import type { Hotel } from "@/types/hotels";
 import SectionHeader from "../shared/SectionHeader";
 import PropertyCard from "../shared/PropertyCard";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, HotelIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 export default function HotelsSection() {
@@ -12,7 +12,7 @@ export default function HotelsSection() {
     useEffect(() => {
         async function fetchHotels() {
             try {
-                const data = await getHotels();
+                const data = await getProperties('hotel');
                 setHotels(data);
             } catch (error) {
                 console.error(error);
@@ -27,8 +27,9 @@ export default function HotelsSection() {
 
     if (loading) {
         return (
-            <main className="container mx-auto px-4 py-20 text-center">
-                جاري تحميل الفنادق...
+            <main className="container mx-auto px-4 py-20 flex items-center justify-center gap-3 text-center">
+                <HotelIcon className="text-gold"/>
+                <p className="text-bold text-2xl">جارى <span className="text-gold">تحميل </span>الفنادق </p>
             </main>
         );
     }
