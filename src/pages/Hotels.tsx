@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PropertyListing from "@/components/shared/PropertyListing";
 import { getProperties } from "@/services/propertyService";
 import type { Hotel } from "@/types/hotels";
+import PropertyLoading from "@/components/shared/PropertyLoading";
 
 export default function Hotels() {
   const [hotels, setHotels] = useState<Hotel[]>([]);
@@ -12,6 +13,7 @@ export default function Hotels() {
     async function fetchHotels() {
       try {
         const data = await getProperties('hotel');
+        await new Promise((resolve) => setTimeout(resolve, 1400));
         setHotels(data);
       } catch (error) {
         console.error(error);
@@ -26,9 +28,7 @@ export default function Hotels() {
 
   if (loading) {
     return (
-      <main className="container mx-auto px-4 py-20 text-center">
-        جاري تحميل الفنادق...
-      </main>
+      <PropertyLoading type="hotel"/>
     );
   }
 

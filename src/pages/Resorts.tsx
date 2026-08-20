@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropertyListing from "@/components/shared/PropertyListing";
 import { getProperties } from "@/services/propertyService";
 import type { Hotel } from "@/types/hotels";
-import { HotelIcon } from "lucide-react";
+import PropertyLoading from "@/components/shared/PropertyLoading";
 
 export default function Resorts() {
     const [resorts, setResorts] = useState<Hotel[]>([]);
@@ -13,6 +13,7 @@ export default function Resorts() {
         async function fetchResorts() {
             try {
                 const data = await getProperties('resort');
+                await new Promise((resolve) => setTimeout(resolve, 1400));
                 setResorts(data);
             } catch (error) {
                 console.error(error);
@@ -27,10 +28,7 @@ export default function Resorts() {
 
     if (loading) {
         return (
-            <main className="container mx-auto px-4 py-20 flex items-center justify-center gap-3 text-center">
-                <HotelIcon className="text-gold"/>
-                <p className="text-bold text-2xl">جارى <span className="text-gold">تحميل </span>المنتجعات </p>
-            </main>
+            <PropertyLoading type="resort"/>
         );
     }
 

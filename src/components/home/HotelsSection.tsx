@@ -2,9 +2,10 @@ import { getProperties } from "@/services/propertyService";
 import type { Hotel } from "@/types/hotels";
 import SectionHeader from "../shared/SectionHeader";
 import PropertyCard from "../shared/PropertyCard";
-import { ArrowLeft, HotelIcon } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PropertyLoading from "../shared/PropertyLoading";
 export default function HotelsSection() {
     const [hotels, setHotels] = useState<Hotel[]>([]);
     const [loading, setLoading] = useState(true);
@@ -27,10 +28,7 @@ export default function HotelsSection() {
 
     if (loading) {
         return (
-            <main className="container mx-auto px-4 py-20 flex items-center justify-center gap-3 text-center">
-                <HotelIcon className="text-gold"/>
-                <p className="text-bold text-2xl">جارى <span className="text-gold">تحميل </span>الفنادق </p>
-            </main>
+            <PropertyLoading type="hotel"/>
         );
     }
 

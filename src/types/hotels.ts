@@ -1,3 +1,4 @@
+import type { Room } from "./rooms";
 
 export interface HotelReview {
     id: string;
@@ -35,6 +36,7 @@ export interface Hotel {
     type: "hotel" | "resort" | "apartment";
     description: string;
     longDescription: string;
+    rooms: Room[];
     image: string;
     gallery: string[];
     rating: number;
@@ -49,3 +51,4 @@ export interface Hotel {
     reviews: HotelReview[];
     featured?: boolean;
 }
+
