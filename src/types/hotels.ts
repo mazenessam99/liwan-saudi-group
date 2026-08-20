@@ -51,4 +51,3 @@ export interface Hotel {
     reviews: HotelReview[];
     featured?: boolean;
 }
-
