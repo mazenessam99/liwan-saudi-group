@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
 
 type PropertyLoadingProps = {
-    type?: "hotel" | "resort";
+    type?: "hotel" | "resort" | "attraction";
 };
 
 export default function PropertyLoading({
@@ -10,6 +10,7 @@ export default function PropertyLoading({
     const typeName = {
         hotel: "الفنادق",
         resort: "المنتجعات",
+        attraction:"الواجهات"
     };
 
     const title = type ? `جاري تحميل ${typeName[type]}` : "جاري تحميل التفاصيل";
