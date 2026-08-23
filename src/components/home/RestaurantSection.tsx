@@ -1,35 +1,17 @@
-import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-
 import RestaurantCard from "../shared/RestaurantCard";
 import SectionHeader from "../shared/SectionHeader";
 import { getFeaturedRestaurants } from "@/lib/api/restaurants";
 import PropertyLoading from "../shared/PropertyLoading";
+import type { Restaurant } from "@/types/restaurants";
+import useFetch from "@/hooks/useFetch";
 
 
 
 export default function RestaurantSection() {
-    const [restaurants, setRestaurants] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        async function fetchRestaurants() {
-            try {
-                const data = await getFeaturedRestaurants();
-                setRestaurants(data);
-            } catch (error) {
-                console.error(error);
-                setError("حدث خطأ أثناء تحميل المطاعم");
-
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchRestaurants();
-    }, []);
+    const {data:restaurants,loading,error}=useFetch<Restaurant[]>(getFeaturedRestaurants);
 
     if (loading) {
         return (
@@ -53,7 +35,7 @@ export default function RestaurantSection() {
             />
 
             <div className="container mx-auto px-4 lg:px-8 grid md:grid-cols-3 gap-3">
-                {restaurants.map((restaurant) => (
+                {restaurants?.map((restaurant) => (
                     <RestaurantCard
                         restaurant={restaurant}
                         key={restaurant.id}

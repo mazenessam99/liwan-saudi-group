@@ -4,31 +4,13 @@ import SectionHeader from "../shared/SectionHeader";
 import PropertyCard from "../shared/PropertyCard";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import PropertyLoading from "../shared/PropertyLoading";
+import useFetch from "@/hooks/useFetch";
 export default function HotelsSection() {
-    const [hotels, setHotels] = useState<Hotel[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
-    useEffect(() => {
-        async function fetchHotels() {
-            try {
-                const data = await getProperties('hotel');
-                setHotels(data);
-            } catch (error) {
-                console.error(error);
-                setError("حدث خطأ أثناء تحميل الفنادق");
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchHotels();
-    }, []);
-
+    const { data: hotels, loading, error } = useFetch<Hotel[]>(() => getProperties("hotel"));
     if (loading) {
         return (
-            <PropertyLoading type="hotel"/>
+            <PropertyLoading type="hotel" />
         );
     }
 
@@ -45,7 +27,7 @@ export default function HotelsSection() {
             <SectionHeader eyebrow="اختيارات ليوان" title="فنادق مميزة" subtitle="اكتشف نخبة من أرقى فنادقنا في أجمل الوجهات السعودية" />
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {hotels.slice(0, 6).map((hotel) => (
+                    {hotels?.slice(0, 6).map((hotel) => (
                         <PropertyCard hotel={hotel} id={hotel.id} key={hotel.id} />
                     ))}
                 </div>

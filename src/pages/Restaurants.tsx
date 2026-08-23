@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import PageBanner from "@/components/shared/PageBanner";
 import RestaurantCard from "@/components/shared/RestaurantCard";
 import EmptyState from "@/components/shared/EmptyState";
@@ -14,29 +13,11 @@ import {
 
 import { Search, SlidersHorizontal } from "lucide-react";
 import PropertyLoading from "@/components/shared/PropertyLoading";
+import useFetch from "@/hooks/useFetch";
+import type { Restaurant } from "@/types/restaurants";
 
 export default function Restaurants() {
-    const [restaurants, setRestaurants] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        async function fetchRestaurants() {
-            try {
-                const data = await getAllRestaurants();
-                await new Promise((resolve) => setTimeout(resolve, 1100));
-                setRestaurants(data);
-            } catch (error) {
-                console.error("Restaurants error:", error);
-                setError("حدث خطأ أثناء تحميل المطاعم");
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchRestaurants();
-    }, []);
-
+    const {data:restaurants,loading,error}=useFetch<Restaurant[]>(getAllRestaurants);
 
     const {
         search,
@@ -46,7 +27,7 @@ export default function Restaurants() {
         cities,
         filtered: filteredRestaurants,
         clearFilters,
-    } = useListFilters(restaurants, {
+    } = useListFilters(restaurants ?? [], {
         getName: (restaurant: any) => restaurant.name,
         getCity: (restaurant: any) => restaurant.city,
     });

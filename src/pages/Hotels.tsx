@@ -1,31 +1,11 @@
-import { useEffect, useState } from "react";
 import PropertyListing from "@/components/shared/PropertyListing";
 import { getProperties } from "@/services/propertyService";
 import type { Hotel } from "@/types/hotels";
 import PropertyLoading from "@/components/shared/PropertyLoading";
+import useFetch from "@/hooks/useFetch";
 
 export default function Hotels() {
-  const [hotels, setHotels] = useState<Hotel[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    async function fetchHotels() {
-      try {
-        const data = await getProperties('hotel');
-        await new Promise((resolve) => setTimeout(resolve, 1100));
-        setHotels(data);
-      } catch (error) {
-        console.error(error);
-        setError("حدث خطأ أثناء تحميل الفنادق");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchHotels();
-  }, []);
-
+  const {data:hotels,loading,error}=useFetch<Hotel[]>( () => getProperties("hotel"));
   if (loading) {
     return (
       <PropertyLoading type="hotel"/>
@@ -42,7 +22,7 @@ export default function Hotels() {
 
   return (
     <PropertyListing
-      items={hotels}
+      items={hotels ??[]}
       title="فنادقنا الفاخرة"
       description="اكتشف أرقى الفنادق"
     />

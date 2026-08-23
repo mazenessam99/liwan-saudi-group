@@ -1,29 +1,13 @@
-import { useEffect, useState } from "react";
 import SectionHeader from "../shared/SectionHeader";
 import type { Offer } from "@/types/offers";
 import { getOffers } from "@/services/offerService";
 import PropertyLoading from "../shared/PropertyLoading";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import useFetch from "@/hooks/useFetch";
 
 export default function OffersSection() {
-    const [offers,setOffers]=useState<Offer[]>([]);
-    const [loading,setLoading]=useState(true);
-    const [error,setError]=useState('');
-    useEffect(()=>{
-        async function fetchOffers(){
-            try{
-                const data=await getOffers();
-                setOffers(data)
-            }catch(error){
-                setError("حدث خطأ أثناء تحميل العروض");
-            }
-            finally{
-                setLoading(false)
-            }
-        }
-        fetchOffers()
-    },[])
+    const {data:offers,loading,error}=useFetch<Offer[]>(getOffers);
     if (loading) {
             return (
                 <PropertyLoading type="offers"/>
@@ -42,7 +26,7 @@ export default function OffersSection() {
             <SectionHeader eyebrow="حصرياً" title="عروض استثنائية"/>
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {offers.slice(0,3).map((offer)=>(
+                    {offers?.slice(0,3).map((offer)=>(
                         <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl overflow-hidden flex flex-col">
                             <div className="aspect-video overflow-hidden">
                                 <img src={offer.image} alt={offer.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 hover:cursor-pointer"/>
