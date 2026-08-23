@@ -2,6 +2,7 @@ import CTASection from "@/components/home/CTASection";
 import DestinationsSection from "@/components/home/DestinationsSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import HotelsSection from "@/components/home/HotelsSection";
+import OffersSection from "@/components/home/OffersSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import RestaurantSection from "@/components/home/RestaurantSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -13,6 +14,7 @@ export default function Home() {
             <HotelsSection/>
             <DestinationsSection/>
             <RestaurantSection/>
+            <OffersSection/>
             <TestimonialsSection/>
             <WhyLiwanSection/>
             <FAQSection/>

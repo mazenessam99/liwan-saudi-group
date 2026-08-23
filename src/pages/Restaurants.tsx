@@ -24,7 +24,7 @@ export default function Restaurants() {
         async function fetchRestaurants() {
             try {
                 const data = await getAllRestaurants();
-                await new Promise((resolve) => setTimeout(resolve, 1300));
+                await new Promise((resolve) => setTimeout(resolve, 1100));
                 setRestaurants(data);
             } catch (error) {
                 console.error("Restaurants error:", error);

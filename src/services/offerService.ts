@@ -4,8 +4,8 @@ import { supabase } from "@/lib/supabase";
 export async function getOffers(): Promise<Offer[]> {
     const { data, error } = await supabase
         .from("offers")
-        .select("*")
-        
+        .select("*");
+
     if (error) {
         throw error;
     }
