@@ -11,7 +11,7 @@ export default function Offers() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     useEffect(() => {
-        async function fetchHotels() {
+        async function fetchOffers() {
             try {
                 const data = await getOffers();
                 await new Promise((resolve) => setTimeout(resolve, 1100));
@@ -24,7 +24,7 @@ export default function Offers() {
             }
         }
 
-        fetchHotels();
+        fetchOffers();
     }, []);
 
     if (loading) {
