@@ -5,12 +5,14 @@ import { ArrowLeft } from "lucide-react";
 import RestaurantCard from "../shared/RestaurantCard";
 import SectionHeader from "../shared/SectionHeader";
 import { getFeaturedRestaurants } from "@/lib/api/restaurants";
+import PropertyLoading from "../shared/PropertyLoading";
 
 
 
 export default function RestaurantSection() {
     const [restaurants, setRestaurants] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         async function fetchRestaurants() {
@@ -18,7 +20,9 @@ export default function RestaurantSection() {
                 const data = await getFeaturedRestaurants();
                 setRestaurants(data);
             } catch (error) {
-                console.error("Restaurant section error:", error);
+                console.error(error);
+                setError("حدث خطأ أثناء تحميل المطاعم");
+
             } finally {
                 setLoading(false);
             }
@@ -28,7 +32,17 @@ export default function RestaurantSection() {
     }, []);
 
     if (loading) {
-        return null;
+        return (
+            <PropertyLoading type="restaurant" />
+        );
+    }
+
+    if (error) {
+        return (
+            <main className="container mx-auto px-4 py-20 text-center">
+                <p className="text-red-500">{error}</p>
+            </main>
+        );
     }
 
     return (

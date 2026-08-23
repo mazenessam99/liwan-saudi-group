@@ -13,7 +13,7 @@ export default function Resorts() {
         async function fetchResorts() {
             try {
                 const data = await getProperties('resort');
-                await new Promise((resolve) => setTimeout(resolve, 1400));
+                await new Promise((resolve) => setTimeout(resolve, 1300));
                 setResorts(data);
             } catch (error) {
                 console.error(error);

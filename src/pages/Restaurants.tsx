@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 
 import { Search, SlidersHorizontal } from "lucide-react";
+import PropertyLoading from "@/components/shared/PropertyLoading";
 
 export default function Restaurants() {
     const [restaurants, setRestaurants] = useState<any[]>([]);
@@ -23,11 +24,10 @@ export default function Restaurants() {
         async function fetchRestaurants() {
             try {
                 const data = await getAllRestaurants();
-
+                await new Promise((resolve) => setTimeout(resolve, 1300));
                 setRestaurants(data);
             } catch (error) {
                 console.error("Restaurants error:", error);
-
                 setError("حدث خطأ أثناء تحميل المطاعم");
             } finally {
                 setLoading(false);
@@ -36,6 +36,7 @@ export default function Restaurants() {
 
         fetchRestaurants();
     }, []);
+
 
     const {
         search,
@@ -52,9 +53,7 @@ export default function Restaurants() {
 
     if (loading) {
         return (
-            <main className="container mx-auto px-4 py-20 text-center">
-                جاري تحميل المطاعم...
-            </main>
+            <PropertyLoading type="restaurant" />
         );
     }
 
@@ -65,6 +64,7 @@ export default function Restaurants() {
             </main>
         );
     }
+
 
     return (
         <main>

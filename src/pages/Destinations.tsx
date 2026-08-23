@@ -18,6 +18,7 @@ export default function Destinations() {
         async function loadAttraction() {
             try {
                 const data = await getAttractions();
+                await new Promise((resolve) => setTimeout(resolve, 1300));
                 setAttractions(data);
             }
             catch (error) {
