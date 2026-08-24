@@ -5,6 +5,7 @@ import { getPropertyById } from "@/services/propertyService";
 import type { Hotel } from "@/types/hotels";
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
+import PropertyOverview from "@/components/property-details/PropertyOverview";
 
 export default function PropertyDetails() {
     const { id } = useParams()
@@ -31,10 +32,11 @@ export default function PropertyDetails() {
             <NotFound/>
         );
     }
-    
+
     return (
         <main className="container mx-auto px-4 lg:px-8 mt-6">
             <PropertyQuickFacts hotel={hotel} />
+            <PropertyOverview hotel={hotel}/>
         </main>
     )
 }
