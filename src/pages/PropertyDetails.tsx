@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import PropertyOverview from "@/components/property-details/PropertyOverview";
 import PropertyAmenities from "@/components/property-details/PropertyAmenities";
+import PropertyServices from "@/components/property-details/PropertyServices";
 
 export default function PropertyDetails() {
     const { id } = useParams()
@@ -38,7 +39,9 @@ export default function PropertyDetails() {
         <main className="container mx-auto px-4 lg:px-8 mt-6">
             <PropertyQuickFacts hotel={hotel} />
             <PropertyOverview hotel={hotel}/>
+            <PropertyServices hotel={hotel}/>
             <PropertyAmenities hotel={hotel}/>
+            
         </main>
     )
 }
