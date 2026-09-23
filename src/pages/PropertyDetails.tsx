@@ -8,6 +8,8 @@ import NotFound from "./NotFound";
 import PropertyOverview from "@/components/property-details/PropertyOverview";
 import PropertyAmenities from "@/components/property-details/PropertyAmenities";
 import PropertyServices from "@/components/property-details/PropertyServices";
+import PropertyRooms from "@/components/property-details/PropertyRooms";
+import PropertyBooking from "@/components/property-details/PropertyBooking";
 
 export default function PropertyDetails() {
     const { id } = useParams()
@@ -41,7 +43,8 @@ export default function PropertyDetails() {
             <PropertyOverview hotel={hotel}/>
             <PropertyServices hotel={hotel}/>
             <PropertyAmenities hotel={hotel}/>
-            
+            <PropertyRooms hotel={hotel}/>
+            <PropertyBooking hotel={hotel}/>
         </main>
     )
 }
