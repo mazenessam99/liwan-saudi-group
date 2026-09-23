@@ -1,6 +1,5 @@
 import type { Hotel } from "@/types/hotels"
 import DetailSection from "./DetailSection"
-import { Calendar } from "../ui/calendar"
 import { Users } from "lucide-react"
 import toast from "react-hot-toast"
 
