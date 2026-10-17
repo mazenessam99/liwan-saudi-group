@@ -1,6 +1,7 @@
 import CTASection from "@/components/home/CTASection";
 import DestinationsSection from "@/components/home/DestinationsSection";
 import { FAQSection } from "@/components/home/FAQSection";
+import HeroSlider from "@/components/home/HeroSlider";
 import HotelsSection from "@/components/home/HotelsSection";
 import OffersSection from "@/components/home/OffersSection";
 import PartnersSection from "@/components/home/PartnersSection";
@@ -11,6 +12,7 @@ import WhyLiwanSection from "@/components/home/WhyLiwanSection";
 export default function Home() {
     return (
         <main className="">
+            <HeroSlider />
             <HotelsSection/>
             <DestinationsSection/>
             <RestaurantSection/>

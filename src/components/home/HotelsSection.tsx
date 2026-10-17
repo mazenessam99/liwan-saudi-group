@@ -23,7 +23,7 @@ export default function HotelsSection() {
     }
 
     return (
-        <section className="py-20">
+        <section className="pt-5 pb-20">
             <SectionHeader eyebrow="اختيارات ليوان" title="فنادق مميزة" subtitle="اكتشف نخبة من أرقى فنادقنا في أجمل الوجهات السعودية" />
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
